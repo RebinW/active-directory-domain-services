@@ -1,6 +1,22 @@
+# Preparation and configuration of the domain controller  
+In this lab, i'm going to go through the setup of installing and configuring the domain controller.  
 
-- VM design decisions
-- Static IP configuration
-- Server renaming
-- Network explanation
-- Why DNS points to itself
+## VM design decisions
+
+I'm going to use VirtualBox to run the virtual environment and install my VM "Windowsm Server", these are the following specs:
+- VM Name: **DC01**
+- OS Edition: **Windows Server 2022**
+- Memory: **4096 MB "4 GB"**
+- CPU: **2 CPU'S**
+- Harddisk: **80 GB VDI "VirtualBox Disk Image" Dynamic**
+  - Dynamic: This means the virtual disk consumes physical storage on the host "my PC" on as data is writtren inside the OS. The disk expands automatically up to the configured maximum size "80 GB". In other words, the VM does not reserve all 80 GB on the host PC from the beginning.
+
+**IMPORTANT**  
+NOTE: My default *Unattended installation is checked*, I disabled the option during VM creation. The unattended setup automatically applies predefined identity and systenm configurations such as user accounts, hostname, and DNS suffix "Domain name". For my project I went with a manual installation to ensure a clean baseline server and full admin control over all configurations. This allows the server identity, networking configuration, and later Active Directory domain setup to be defined as part of the learning and documentation.
+
+!(Unattended installation)[screenshots/unattended.png]
+
+Static IP configuration
+Server renaming
+Network explanation
+Why DNS points to itself
