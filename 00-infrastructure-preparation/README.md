@@ -74,3 +74,12 @@ Adapter 1:
 Adapter 2:  
 ![new adapter](screenshots/adapter2.png)
 
+Finally, I'll open command promt and type ipconfig just show and verify my IP settings:  
+![IP-Settings](screenshots/ipsettings.png)
+
+**Internal traffic -> 192.168.56.X**  
+**Internet traffic -> 10.0.3.2**  
+
+Just to conclude: In this setup, VirtualBox acts as the router for internet traffic. The NAT adapter provides a virtual default gateway, which allows the virtual machines to reach the internet. The Host-Only adapter is used as the internal network where all Active Directory and DNS communication takes place.
+
+This setup keeps the internal domain network isolated while still allowing outbound internet access for updates and future hybrid configuration.
