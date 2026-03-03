@@ -57,7 +57,8 @@ Public DNS:
 ![public DNS](screenshots/nslookup.png)
 
 Private DNS:  
-![Private DNS](privatedns)
+![Private DNS](privatedns.png)
 
+I'm going to dedicate the next module to configure and explain DNS's importance for an domain controller. Here I simply just wanted to test to see if the DNS server role has been installed correctly.
 
 
