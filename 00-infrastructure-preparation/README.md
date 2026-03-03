@@ -9,7 +9,7 @@ I'm going to use VirtualBox to run the virtual environment and install my VM "Wi
 - Memory: **4096 MB "4 GB"**
 - CPU: **2 CPU'S**
 - Harddisk: **80 GB VDI "VirtualBox Disk Image" Dynamic**
-  - Dynamic: This means the virtual disk consumes physical storage on the host "my PC" on as data is writtren inside the OS. The disk expands automatically up to the configured maximum size "80 GB". In other words, the VM does not reserve all 80 GB on the host PC from the beginning.
+  - Dynamic: This means the virtual disk consumes storage on the physical host PC as data is writtren. The disk expands automatically up to the configured maximum size "80 GB". In other words, the VM does not reserve all 80 GB on the host PC upfront.
 
 **IMPORTANT**  
 NOTE: My default *Unattended installation is checked*, I disabled the option during VM creation. The unattended setup automatically applies predefined identity and systenm configurations such as user accounts, hostname, and DNS suffix "Domain name". For my project I went with a manual installation to ensure a clean baseline server and full admin control over all configurations. This allows the server identity, networking configuration, and later Active Directory domain setup to be defined as part of the learning and documentation.
