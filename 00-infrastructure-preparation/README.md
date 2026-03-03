@@ -83,3 +83,5 @@ Finally, I'll open command promt and type ipconfig just show and verify my IP se
 Just to conclude: In this setup, VirtualBox acts as the router for internet traffic. The NAT adapter provides a virtual default gateway, which allows the virtual machines to reach the internet. The Host-Only adapter is used as the internal network where all Active Directory and DNS communication takes place.
 
 This setup keeps the internal domain network isolated while still allowing outbound internet access for updates and future hybrid configuration.
+
+I could also have used other setups that would simulate an enterprise environment a bit better, but that would require the domain controller to run several other roles such as DHCP and RRAS "routing". I want to dedicate the server to identity and therefore I chose this setup. Also in another module I'll go into depth on DNS since this is a very important part of AD DS. 
