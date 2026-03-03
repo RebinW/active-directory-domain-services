@@ -43,7 +43,7 @@ When we promote a server to a domain controller:
 
 To change the hostname of the server:
 - Server Manager - Local Server - Computer name - Change:  
-![Change hostname](hostname)
+![Change hostname](screenshots/hostname.png)
 
 ## Network configuration
 Normally, in on a domain controller some of the first steps in a network configuration would be to:
