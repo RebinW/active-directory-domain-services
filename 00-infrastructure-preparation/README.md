@@ -1,4 +1,4 @@
-# Preparation and configuration of the domain controller  
+# Preparation and configuration of the Windows Server
 In this lab, i'm going to go through the setup of installing and configuring the domain controller.  
 
 ## VM design decisions
