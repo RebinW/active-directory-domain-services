@@ -69,8 +69,8 @@ To solve this problem and future proof my lab I had to install an additional ada
 
 To install the two adapters we need to power of the VM, then inside Virtual box i've done the following configuration:  
 Adapter 1:  
-![](screenshots/adapter1.png)
+![new adapter](screenshots/adapter1.png)
 
 Adapter 2:  
-![](screenshots/adapter2.png)
+![new adapter](screenshots/adapter2.png)
 
