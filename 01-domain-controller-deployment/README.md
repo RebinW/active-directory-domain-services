@@ -19,7 +19,7 @@ Inside Server Manager a yellow triangle will appear saying; *Configuration requi
 
 Inside the configuration wizzard there are mainly two very important sections we should be aware of.  
 
-1. The Deployment Configuration:
+**1. The Deployment Configuration:**
    - Here the important part is to select the correct deployment operation. We haven't created a forrest priviously and therefore do not have a domain yet, so we chose **add a new forrest** and name our root domain: klarstroem.local:
 ![Creating new forest](screenshots/deploymentconfiguration.png)
 
@@ -29,8 +29,9 @@ This creates:
   - A new DNS namespace
    
 
-2. The Domain Controller options:
-I'd like to explain the different options here:
+**2. The Domain Controller options:**  
+![Domain Controller Options](screenshots/domaincontrolleroptions.png)
+
    - **Functional level:** The minimum Windows Server version allowed for domain controller in this forest, meaning all domain controllers must run Windows Server 2016 or newer.
    - **DNS Server:** It is automatically selected because Active Directory requires DNS
    - **Global Catalog:** Allows efficient authentication and forest-wide object searches. It stores nessesary information from other domains and a full copy of its own domain.
