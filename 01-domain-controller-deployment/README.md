@@ -42,3 +42,22 @@ This creates:
        
       Therefore they can deploy a RODC while head office in another country fully handles       the writable domain controllers.
    - **Directory Services Restore Mode:** This is a recovery password for maintenance and disaster recovery.
+
+## Test promotion and configuration
+ 
+**1.Test promotion to domain controller:**   
+If we sign out or restart the VM we can now see that the primary authentication method has changed, the VM is no longer a member of a WorkGroup but instead the domain klarstroem.local:  
+![Sign-in](screenshots/signin1.png)  
+![Sign-in](screenshots/signin2.png)
+
+**2. Test DNS:**  
+We simply want to test if the DNS Server role has been installed. I'm going to test both private DNS and Public DNS
+
+Public DNS:  
+![public DNS](screenshots/nslookup.png)
+
+Private DNS:  
+![Private DNS](privatedns)
+
+
+
