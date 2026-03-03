@@ -42,7 +42,35 @@ When we promote a server to a domain controller:
 - Changing it later is complex
 
 To change the hostname of the server:
-- Server Manager - Local Server - Computer name - Change:
+- Server Manager - Local Server - Computer name - Change:  
 ![Change hostname](hostname)
+
 ## Network configuration
+Normally, in on a domain controller some of the first steps in a network configuration would be to:
+- Disable DHCP and configure a static IP address for the Server
+- Make sure to set the correct subnetmask
+- Configure DNS, on a domain controller the DNS server should be the domain controller itself. 
+
+In VirtualBox when installing a VM, VirtualBox then by default creates adapter 1 enables it and sets it up to run NAT. This basically means that it creates a virtual network and VirtualBox will act ass a virtual routher handling the network address translation, so by default if the VM wants to access the internet is:
+- VM -> VirtualBox "Virtual routher running NAT" -> physical PC -> Physical home routher
+
+I had to stop and think ahead and ask myself if this is going to cause me any problems later because the goal is to domain join clients to the domain controller and later I would also want to ensure that I would be able to configure **hybrid setup using PHS**. 
+
+Why is NAT-only going to be a problem?
+- VirtualBox creates a small routher per VM group
+- Some broadcast and service discovery behaviours are limited
+- It does not perfectly simulate a real network since every VM will hide behind a virtual router and have its own LAN
+
+ NAT only setup is not reliable for a realistic AD lab with the requirements that I have, also AD depends on real LAN behaviour.
+
+To solve this problem and future proof my lab I had to install an additional adapter "Host-only adapter" on the domain controller, this means the VM will have to adapters enabled:
+- Host-Only adapter = internal company LAN
+- NAT adapter = simulated internet edge
+
+To install the two adapters we need to power of the VM, then inside Virtual box i've done the following configuration:  
+Adapter 1:  
+![](screenshots/adapter1.png)
+
+Adapter 2:  
+![](screenshots/adapter2.png)
 
