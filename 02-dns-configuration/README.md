@@ -1,16 +1,36 @@
-# DNS in Active Directory
+# Deploying a second domain controller
 
-The intent behind this dedicated module to DNS is to show understanding of the importance of DNS in Active Directory. I'll show some of the configurations, explain in depth the different zones and records inside DNS manager, and we'll also test the different DNS settings.
+## Overview
+This lab documents the deployment of a second domain controller to our AD environment. The goal is to provide redundancy, enable replication between DC'S, and improve the resiliance of authentication and DNS services.
 
-## Purpose of DNS in Active Directory
+I the previous lab [domain controller deployment](https://github.com/RebinW/active-directory-domain-services/blob/main/01-domain-controller-deployment/01-domain-controller-deployment.md) I went through each step on how to install AD DS and how to promote the server to be a domain controller. In this module I wont document the same step, but instead focus on what to be aware of when deploying a second domain controller to an existing domain.
 
+## Objectives
+1. Understanding the importance of multiple domain controllers.
+2. Configure a second domain controller in an existing domain.
+3. Verify Active Directory replication.
+4. Verify DNS replication between domain controllers.
 
+## Environment
+- **Domain:** KlarStroem.local
+- **Network:** 192.168.56.0/24
+- **Servers:**
+  - DC01 - Primary domain controller
+  - DC02 - Additional domain controller  
+- **Technologies:**
+  - VirtualBox
+  - Windows Server 2019
+  - Active Directory Domain Services
+  - DNS server
 
-## DNS architecture in the lab
+**Insert diagram here later**
 
+## Implementation
 
+## Verification
 
-- DNS zones explanation
-- Forwarders configuration
-- SRV records discussion
-- Why AD depends on DNS
+## Results
+
+## Lessons Learned
+
+## Next steps
