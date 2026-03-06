@@ -64,4 +64,37 @@ After it will ask us to include Global Gatalog and Install DNS Server, and after
 
 ![replication](screenshots/replication.png)
 
+From here we just continue through the installer and the domain controller will be promoted successfully. 
+
+#### Step 4: Change DNS Settings.
+Both servers are now domain controller and both host DNS services. So now each domain controller should reference itself for DNS as primary and the other domain controller as secondary. We would want to do this for two main reasons:
+1. Local DNS resolution: If the DC queries its own DNS server first, the lookup is faster and independent of the network
+2. Redundancy: If one DC fails, then DNS queries can still be resolved by the other server.
+
+- **DC01:**
+  - Primary DNS: 192.168.56.10
+  - Secondary DNS: 192.168.56.11
+- **DC02:**
+  - Primary DNS: 192.168.56.11
+  - Secondary DNS: 192.168.56.10
+
 ## Verification
+
+**Test 1: Verify Active Directory replication**
+We haven't yet started creating objects in our domain, but there are other ways we can test replication between domain controllers. A common way is to open command promt and type *repadmin / replsummary:*
+
+![replication test](screenshots/replicationtest.png)
+
+This outcome provides data of replication health between domain controllers. The output shows that DC01 and DC02 successfully replicate all partitions without failures. Please see next lab for detailed replication analysis.
+
+**Test 2: Verify that both DC are advertized in DNS**
+
+When we later in the project join a client to the domain, we then want to ensure that the client PC can locate both domain controller. The client would send a DNS query for the SRV record: _ldap._tcp.dc._msdcs.klarstroem.local and DNS should then respond with a list of domain controller that provide ldap services for the domain: 
+
+![SRV](screenshots/srvquery.png)
+
+I'll explain DNS concepts and Zones in depth in the DNS Module.
+
+## Results
+
+## Lessons Learned
