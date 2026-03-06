@@ -12,13 +12,13 @@ I the previous lab [domain controller deployment](https://github.com/RebinW/acti
 4. Verify DNS replication between domain controllers.
 
 ### Environment
-- Domain: KlarStroem.local
-- Servers:
-  - DC01 - Primary domain controller
-  - DC02 - Additional domain controller
-- Network: 192.168.56.0/24
-- Technologies:
-  - VirtualBox
-  - Windows Server 2019
-  - Active Directory Domain Services
-  - DNS server
+**Domain:** KlarStroem.local
+**Servers:**
+- DC01 - Primary domain controller
+- DC02 - Additional domain controller
+Network: 192.168.56.0/24
+Technologies:
+- VirtualBox
+- Windows Server 2019
+- Active Directory Domain Services
+- DNS server
