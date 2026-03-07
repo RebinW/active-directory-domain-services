@@ -118,6 +118,6 @@ Duing the replication tests I ran the following command to test replication heal
 
 ![Testing replication health](screenshots/testingrep.png)
 
-
+Now, Looking at the above picture, I thought that replication going from DC02 to DC01 was failing, but this wasn't the case. I spent a long time trying to troubleshoot this exact problem. During the process I became alot wiser on how replication actually works and on how to use the different commands to test this exactly. This is such an important part of AD DS, that I would like to dedicate the next module to go into more depth on this exact topic.
 
 
