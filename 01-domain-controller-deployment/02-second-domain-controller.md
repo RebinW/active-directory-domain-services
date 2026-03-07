@@ -113,3 +113,11 @@ Since most of the communicating in by lab is going to be internal, but later als
 
 ![Changing prioritization](screenshots/changeprioritization.png)
 
+**2. Testing replication between the domain controllers**  
+Duing the replication tests I ran the following command to test replication health "repadmin /replsummary:
+
+![Testing replication health](screenshots/testingrep.png)
+
+
+
+
