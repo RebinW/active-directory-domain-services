@@ -102,7 +102,7 @@ Dns checks confirmed that both domain controller are advertized through the doma
 The environment now has two domain controller providing redundancy for authentication, directory services and DNS. 
 
 ## Lessons Learned  
-I've encountered two problems during this lab:
+Two key observations were made during this deployment, one related to network interfaces during promotion. The other related to replication health outputs. 
 
 **1. Never ending promotion of the server**  
 During the promotion of the server to become a domain controller, the installation took forever and never returned an error just kept installing. I knew that one of the main task during promotion was that it had to replicate the AD server from DC01.
@@ -119,5 +119,3 @@ Duing the replication tests I ran the following command to test replication heal
 ![Testing replication health](screenshots/testingrep.png)
 
 Now, Looking at the above picture, I thought that replication going from DC02 to DC01 was failing, but this wasn't the case. I spent a long time trying to troubleshoot this exact problem. During the process I became alot wiser on how replication actually works and on how to use the different commands to test this exactly. This is such an important part of AD DS, that I would like to dedicate the next module to go into more depth on this exact topic.
-
-
