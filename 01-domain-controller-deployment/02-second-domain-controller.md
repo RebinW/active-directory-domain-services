@@ -101,4 +101,14 @@ Dns checks confirmed that both domain controller are advertized through the doma
 
 The environment now has two domain controller providing redundancy for authentication, directory services and DNS. 
 
-## Lessons Learned
+## Lessons Learned  
+I've encountered two problems during this lab:
+
+**1. Never ending promotion of the server**  
+During the promotion of the server to become a domain controller, the installation took forever and never returned an error just kept installing. I knew that one of the main task during promotion was that it had to replicate the AD server from DC01.
+
+I therefore tested the connection by pinging 192.168.56.10 and it could reach the server without any issues. I thought that maybe during promotion Windows for some reason would prioritze the NAT adapter over the Host-Only adapter, so I tried to disable the NAT adapter while it was still promoting. As soon as I disabled the adapter the installation went through right away. 
+
+Since most of the communicating in by lab is going to be internal, but later also requires internet access for hybrid setup, disableing the NAT adapter is not a long term solution. What I've done instead is to tell the server to priorize the Host-only adapter over the NAT adapter. I did this by setting the metric to 10 on the Host-Only adapter and setting the metric to 50 on the NAT adapter: 
+![Changing prioritization](screenshots/changeprioritization.png)
+
