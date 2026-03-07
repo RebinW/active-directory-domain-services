@@ -64,7 +64,7 @@ This situation can occur when a domain controller is restarted. After start up, 
 
 Because of this, the replication commands shown so far only provide information about previous attempts. They do not confirm whether replication is currently working. For that reason, in next step will force replication in real time. This allows us to verify whether replication between the domain controllers works at this moment.
 
-#### Step 3: Force replication between DC01 and DC02  
+#### Step 3: Forcing replication
 As mentioned, we're able to test replication in real time and by using the command *repadmin /syncall /AdeP* and thereby force replication. Before executing the command, i'd then like to give a short explanation to the command:
 
 **syncall:** Tells the domain controller to synchronize to all its replication partners.
@@ -85,12 +85,13 @@ At the end of each section the message "SyncAll terminated with no errors" confi
 
 This verifies that replication between the domain controllers is functioning correctly.
 
-
-## Verification
-
-## Results
+## Results  
+Replication between DC01 and DC02 was tested and examined using several repadmin commands. The replication summary provided a high-level overview of replication health, while the detailed replication output showed the status for each AD partition. Finally, forced replication confirmed that synchronization between the domain controllers completed successfully.
 
 ## Lessons Learned
 
-## Next steps
+- Replication commands often show historical information, not real-time status
+- Startup timing can cause temporary DNS lookup failures
+- Multiple commands are needed to fully understand replication health
+- AD replication occurs on a per-partition basis. Not all partitions replicate to every domain controller. The domain partition replicates only within its own domain, while partitions such as configuration and schema partitions replicates across the entire forest. 
 
