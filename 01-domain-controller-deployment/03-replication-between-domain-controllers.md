@@ -45,12 +45,29 @@ Largest delta = the time since the last successful replication
 Fails/total = shows how many replication has failed out of the last 5 attempts  
 Error code = gives an indication to why the replication failed
 
-In this example above, DC01 shows successful replication attempts with a very small replication delta, this indicates a healthy synchronization with its partner "DC02". DC02 shows one failed replication attempt with error 1908, this indicates that the domain controller couldn't locate it's partner during that paticular attempt. Because only two domain controllers exist in our environment, this reflects a reflects a temporary replication failure from DC02 to DC01.
+In this example above, DC01 shows successful replication attempts with a very small replication delta, this indicates a healthy synchronization with its partner "DC02". DC02 shows two failed replication attempt with error 8524, this indicates DNS lookup failure. 
 
+The command and the picture above shows that two out of time attempts failed and why does two failed. However, the command does not show when the failure occurred or which AD partition failed. This is where step two comes in.
 
-#### Step 2: Detailed replication status
+#### Step 2: Inspect detailed replication information  
+The *repadmin /showrepl* command shows detailed replication details for each of the 5 partitions. It shows last successful replication time, the last attempt, and any errors that occurred.
+
+Using this command makes it possible to determine which partitions failed to replicate and when the failure occurred.
+
+![Detailed rep info](screenshots/failedrep2.png)
+
+The detailed output shows that the failures occurred earlier due to a DNS lookup issue. We also see that the effected partitions are the configuration partition and the schema partition. Show lets concentrate on the configuration partition: 
+
+The output shows that the last successful replication occurred at 15:53, while the most recent replication attempt at 15:59 failed.
+
+This situation can occur when a domain controller is restarted. After start up, the system automatically tries to replicate with the other domain controllers. If supporting services such as DNS are not fully available yet, the replication attempt may fail.
+
+Because of this, the replication commands shown so far only provide information about previous attempts. They do not confirm whether replication is currently working. For that reason, in next step will force replication in real time. This allows us to verify whether replication between the domain controllers works at this moment.
 
 #### Step 3: Force replication between DC01 and DC02
+
+
+
 
 ## Verification
 
