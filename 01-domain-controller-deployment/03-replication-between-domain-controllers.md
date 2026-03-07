@@ -38,9 +38,14 @@ Containes DNS data related to the domain. This includes DNS records used by doma
 Contains DNS information shared across the entire forest. This ensures that DNS records required across the forest are replicated between all DNS servers. DNS records needed anywhere in the forest, example communication between different domains within the forest.
 
 #### Step 1: Replication health overview  
-The command *repadmin /replsummary* gives a summary of replication attempts between domain controllers. It shows recent failures, replication delays, and overall replication health across the environment.
+The command *repadmin /replsummary* gives a summary of replication attempts between domain controllers. It shows the last 5 replication attempts, replication delays, and overall replication health across the environment.
 
 ![Replication status health](screenshots/failedrep.png)
+Largest delta = the time since the last successful replication  
+Fails/total = shows how many replication has failed out of the last 5 attempts  
+Error code = gives an indication to why the replication failed
+
+In this example above, DC01 shows successful replication attempts with a very small replication delta, this indicates a healthy synchronization with its partner "DC02". DC02 shows one failed replication attempt with error 1908, this indicates that the domain controller couldn't locate it's partner during that paticular attempt. Because only two domain controllers exist in our environment, this reflects a reflects a temporary replication failure from DC02 to DC01.
 
 
 #### Step 2: Detailed replication status
