@@ -109,6 +109,7 @@ During the promotion of the server to become a domain controller, the installati
 
 I therefore tested the connection by pinging 192.168.56.10 and it could reach the server without any issues. I thought that maybe during promotion Windows for some reason would prioritze the NAT adapter over the Host-Only adapter, so I tried to disable the NAT adapter while it was still promoting. As soon as I disabled the adapter the installation went through right away. 
 
-Since most of the communicating in by lab is going to be internal, but later also requires internet access for hybrid setup, disableing the NAT adapter is not a long term solution. What I've done instead is to tell the server to priorize the Host-only adapter over the NAT adapter. I did this by setting the metric to 10 on the Host-Only adapter and setting the metric to 50 on the NAT adapter: 
+Since most of the communicating in by lab is going to be internal, but later also requires internet access for hybrid setup, disableing the NAT adapter is not a long term solution. What I've done instead is to tell the server to priorize the Host-only adapter over the NAT adapter. I did this by setting the metric to 10 on the Host-Only adapter and setting the metric to 50 on the NAT adapter. If I encounter adapter issues later in the lab during hybrid setup, I will then exchange the adapters and go with bridge-mode instead.
+
 ![Changing prioritization](screenshots/changeprioritization.png)
 
