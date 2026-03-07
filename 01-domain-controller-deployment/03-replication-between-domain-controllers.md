@@ -77,10 +77,13 @@ P = means Push - Normally AD replication is pull based, meaning the destination 
 
 Lets go ahead and use the command to test if replication works at this exact time:  
 
-![syncall](screenshots/syncall)
+![syncall](screenshots/syncall.png)
 
+The output shows that replication is for each AD partition (NC = Naming Context). For every partition, the system reports that replication completed successfully between DC01 and DC02.
 
+At the end of each section the message "SyncAll terminated with no errors" confirms that synchronization finished successfully.
 
+This verifies that replication between the domain controllers is functioning correctly.
 
 
 ## Verification
