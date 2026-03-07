@@ -64,7 +64,21 @@ This situation can occur when a domain controller is restarted. After start up, 
 
 Because of this, the replication commands shown so far only provide information about previous attempts. They do not confirm whether replication is currently working. For that reason, in next step will force replication in real time. This allows us to verify whether replication between the domain controllers works at this moment.
 
-#### Step 3: Force replication between DC01 and DC02
+#### Step 3: Force replication between DC01 and DC02  
+As mentioned, we're able to test replication in real time and by using the command *repadmin /syncall /AdeP* and thereby force replication. Before executing the command, i'd then like to give a short explanation to the command:
+
+**syncall:** Tells the domain controller to synchronize to all its replication partners.
+
+Now to the flags: **AdeP:**
+A = means to include all naming contexts (partitions)  
+d = identifies the replication partners by distinguished name in the output. This simply makes the output easier to read  
+e = menas Enterprise - It tells the command to includce all replication partners across sites, not just partners in the same site. We only have one site "network" but in real enterprises they might have several networks/ subnets in different locations.  
+P = means Push - Normally AD replication is pull based, meaning the destination DC quests updates. When we use P, the domain controller pushes the changes to its partners immediately. 
+
+Lets go ahead and use the command to test if replication works at this exact time:  
+
+![syncall](screenshots/syncall)
+
 
 
 
