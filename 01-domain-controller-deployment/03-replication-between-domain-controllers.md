@@ -10,8 +10,41 @@ In this lab we will look at how replication works between domain controllers in 
 4. Identify the five Active Directory naming contexts that replicate between domain controllers.
 
 ## Environment  
-The environments consists of 
+The environments consists of two domain controllers deployed in the klarstroem.local domain.
+
+DC01: Primary controller  
+DC02: Additional domain controller
+
+Both servers run Windows Server and are configured on the same internal network using the Host-Only adapter. DNS services are installed on both controller, allowing domain services and replication to function across the environment. 
+
 ## Implementation
+
+#### Active Directory naming context  
+Before we dive into the different commands and the outputs, I think it would be very benifitial to understand how AD replicates data between domain controllers. AD does not replicate the entire directory as one block. The directory is divided into several **partitions** also called naming contexts. Each partition contains different types of data and is replicated seperately, there are five partitions "blocks":
+
+**Domain Partition:**  
+Contains objects within the domain such as users, groups, computers, and organizational units. This partition only replicates between domain controllers that belong to the same domain.
+
+**Configuration Partition:**  
+Contains configuration information settings for the entire AD forest. This includes sites, subnets, and replication topology settings. This partition replicates to all domain controllers in the forest.
+
+**Schema Partition:**  
+Defines the structure of objects stored in AD. it specifies which object types and attributes are allowed in the directory. The schema is the same across the entire forest and therefore it replicates to all domain controllers.
+
+**DomainDnsZones Partition:**  
+Containes DNS data related to the domain. This includes DNS records used by domain controllers and clients. The partition replicates to domain controllers running DNS services within the same domain. DNS records used inside the same domain.
+
+**ForestDnsZones Partition:**  
+Contains DNS information shared across the entire forest. This ensures that DNS records required across the forest are replicated between all DNS servers. DNS records needed anywhere in the forest, example communication between different domains within the forest.
+
+#### Step 1: Replication health overview  
+Command: repadmin /replsummary  
+
+This command gives us a quick overview of the environment. It tells us if any domain controller currently has replication failures. 
+
+#### Step 2: Detailed replication status
+
+#### Step 3: Force replication between DC01 and DC02
 
 ## Verification
 
