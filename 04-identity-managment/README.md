@@ -1,12 +1,20 @@
-# Title
+# DNS architecture and design
 
-## Overview
+## Overview  
+This lab explains the DNS architecture used in the Active Directory environment and the design decisions behind the chosen deployment model, for that same reason a short explanation of other options will be explained.
 
-## Objectives
+## Objectives  
+- Explain the role of DNS in Active Directory
+- Describe common DNS zone deployment models
+- Document the DNS architecture used in the lab environment
 
-## Environment
+## Environment  
+- Two Windows Servers both running AD DS and DNS
+- Active Directory domain
+- DNS installed on both controllers
 
-## Implementation
+## Implementation  
+
 
 ## Verification
 
