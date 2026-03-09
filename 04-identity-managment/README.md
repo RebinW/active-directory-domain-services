@@ -24,10 +24,16 @@ Before we start going through the different DNS deployment options, I'd like to 
 - DNS Records examples:
   - A records: Resolves hostnames to IPv4 addresses
   - AAAA records: Resolves hostnames to IPv6 addresses
-  - SRV records:
-  - PTR records:
-  - NS records:
-  - CNAME records:
+  - SRV records: Locates services that provide a specific service, commeon services in AD
+    - LDAP
+    - Kerberos
+    - Global Gatelog
+    - Kerberos password change
+  - PTR records: 
+  - NS records: Identifies which DNS servers are authoriative for a zone
+  - CNAME records: Creates an alias that points to another domain name
+    - Example: files.klarstroem.local -> CNAME -> server01.klarstroem.local. Basically this allows multiple names to point to the same server.
+  
 
 
 
