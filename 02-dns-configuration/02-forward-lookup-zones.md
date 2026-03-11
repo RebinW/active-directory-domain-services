@@ -17,14 +17,16 @@ Same environment as in the previous lab
 These zones hold record types that resolve hostnames to IP addresses. Althrough many different record types exist in these zones common for most of them is that they map hostnames to IP addresses.
 
 At first I had a hard time distinguishing the two forward lookup zones from each other, reason being mainly because SRV records exists in both. I learned that the answer different questions. klarstroem.local answers questions like: 
-- which servers provide LDAP for this domain
-- which servers provide Kerberos authentication
+  - which servers provide LDAP for this domain
+  - which servers provide Kerberos authentication
 
 The _msdcs zone one the other hand is used for Active Directory infrastructure discovery. It answers questions like:
-- Which machines are domain controllers?
-- which servers are global catelog seervers
-- which DC own a particular directory object
-- Which DC should replication use
+  - Which machines are domain controllers?
+  - which servers are global catelog seervers
+  - which DC own a particular directory object
+  - Which DC should replication use
+
+So the difference is **service discovery** vs **infrastructure discovery**
 
 Common record types in forward lookup zones are:
 - A records
@@ -41,7 +43,6 @@ We're able to find the DNS zones by opening DNS manager: Server manager -> Tools
 ![DNS Zones](screenshots/dnsmanager.png)
 
 In the above picture, we see the *forward lookup zone* folder/ container. Inside the container we see the two forward lookup zones *klarstroem.local* and *_msdcs.klarstroem.local*.
-
 
 
 **The klarstroem.local zone:**  
@@ -67,6 +68,11 @@ There are also additional folders inside of this domain:
 This zone supports Active Directory infrastructure. It stores records used to locate domain controllers and other directory services. Many of the records inside this zone are SRV records that allows clients to locate domain controllers. I have chosen to dedicate a seperate lab to exactly this because of its importance within Active Directory.
 
 ![msdcs.klarstroem.local zone](screenshots/secondaryzone.png)
+
+#### How records are created in the forward lookup zones  
+When recources join the domain, DNS records are dynamically registered in the primary domain zone. Infrastructure records required for locating domain controller are registered in the _msdcs zone by domain domain controllers and Active Directory services.
+
+Forexample, if a server joins the domain that server will first be registered in the primary zone (klarstroem.local) and typical records such as A and AAAA records will be created. Later when we promote that server to a domain controller then SRV records will automatically be created in the _msdcs zone.
 
 ## Verification
 
