@@ -74,11 +74,10 @@ When recources join the domain, DNS records are dynamically registered in the pr
 
 Forexample, if a server joins the domain that server will first be registered in the primary zone (klarstroem.local) and typical records such as A and AAAA records will be created. Later when we promote that server to a domain controller then SRV records will automatically be created in the _msdcs zone.
 
-## Verification  
-
+## Verification
 We're going to do a simple test to show how hostnames are resolved to IP addresses. Therefore I am going to manually create a simple A record to show exactly this. In later labs im going to join client devices, and I will in those lab show that DNS records are dynamically registered.
 
-#### Create a new A record in the forward lookup zone:  
+#### Create a new A record in the forward lookup zone
 To create a new A record: 
 1. In the klarstroem.local zone right click, and choose New host (A or AAAA)
 2. Give it a hostname: Testhost
@@ -86,20 +85,19 @@ To create a new A record:
 
 ![Test record](screenshots/testrecord.png)
 
-#### Verify DNS resolution  
+#### Verify DNS resolution
 I will verify resolution by running nslookup, and then we'll see that the hostname is resolved to the specified IPv4 address. Also I of course used the Fully Qualified Domain Name: testhost.klarstroem.local
 
 ![resolve hostname](screenshots/resolvehost.png)
 
-#### Testing using ping  
+#### Testing using ping
 
 ![ping host](screenshots/pinghost.png)
 
- 
-
 ## Results
+The forward lookup zone klarstroem.local contains the DNS recvords used to resolve hostnames to IP addresses in the domain. I created a manual A record and verified that the DNS server was able to resolve the hostname correctly using nslookup and ping. This confirmed that the DNS server is functioning as expected and that records stored in the zone can be used by clients and servers in the environment.
 
 ## Lessons Learned
+This lab helped me better understand how forward lookup zones are structured and how DNS records are stored within a domain. I saw how host records map machines to IP addresses and how DNS manager organizes types of records used by Active Directory.
 
-## Next steps
-
+I also learned that DNS in an Active Directory environment is not only used for basic hostname resolution. It also plays an important role in helping clients locate authentication services and other infrastructure services. Understanding how these records are stored in the zone makes it easier to troubleshoot DNS problems in the futuree.
