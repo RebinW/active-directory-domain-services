@@ -37,7 +37,7 @@ This zone is considered the primary zone for the domain. It stores records for h
 
 On the above picture we see some of the different records in this zone. We've got several record types that maps our dc01 and dc02 domain controllers to IPv4 and IPv6 addresses. 
 
-There is also additional folders inside of this domain:
+There are also additional folders inside of this domain:
 - _sites folder: Used when the company has multiple Active Directory sites, meaning domain controllers in other networks/ locations.
   - Example: _ldap._tcp.siteA._sites.dc._msds.klarstroem.local
 - _tcp folder: contains SRV records for services that use the TCP protocol which is most services.
