@@ -33,8 +33,12 @@ In the above picture, we see the *forward lookup zone* folder/ container. Inside
 **The klarstroem.local zone:**  
 This zone is considered the primary zone for the domain. It stores records for hosts and services within the domain
 
+![klarstroem.local zone](screenshots/primaryzone.png)
+
 **The _msdcs.klarstroem.local zone:**  
 This zone supports Active Directory infrastructure. It stores records used to locate domain controllers and other directory services. Many of the records inside this zone are SRV records that allows clients to locate domain controllers. I have chosen to dedicate a seperate lab to exactly this because of its importance within Active Directory.
+
+![msdcs.klarstroem.local zone](screenshots/secondaryzone.png)
 
 ## Verification
 
