@@ -31,9 +31,22 @@ We're able to find the DNS zones by opening DNS manager: Server manager -> Tools
 In the above picture, we see the *forward lookup zone* folder/ container. Inside the container we see the two forward lookup zones *klarstroem.local* and *_msdcs.klarstroem.local*. 
 
 **The klarstroem.local zone:**  
-This zone is considered the primary zone for the domain. It stores records for hosts and services within the domain
+This zone is considered the primary zone for the domain. It stores records for hosts and services within the domain:
 
 ![klarstroem.local zone](screenshots/primaryzone.png)
+
+On the above picture we see some of the different records in this zone. We've got several record types that maps our dc01 and dc02 domain controllers to IPv4 and IPv6 addresses. 
+
+There is also additional folders inside of this domain:
+- _sites folder: Used when the company has multiple Active Directory sites, meaning domain controllers in other networks/ locations.
+  - Example: _ldap._tcp.siteA._sites.dc._msds.klarstroem.local
+- _tcp folder: contains SRV records for services that use the TCP protocol which is most services.
+- _udp folder: Contains SRV records for services that use UDP protocol. Some Kerberos and DNS services uses UDP for performance.
+- DomainDnsZones folder: This ensures replication of DNS zones to all DNS servers in the domain.
+- ForestDnsZones: This ensures replication of DNS data to all DNS servers in the entire forest.
+- same as parent folder files: This means that these files belongs to root of the zone meaning klarstroem.local.
+
+
 
 **The _msdcs.klarstroem.local zone:**  
 This zone supports Active Directory infrastructure. It stores records used to locate domain controllers and other directory services. Many of the records inside this zone are SRV records that allows clients to locate domain controllers. I have chosen to dedicate a seperate lab to exactly this because of its importance within Active Directory.
