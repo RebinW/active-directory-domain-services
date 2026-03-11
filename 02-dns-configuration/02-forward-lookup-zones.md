@@ -1,7 +1,7 @@
 # Forward lookup zones
 
 ## Overview  
-Forward lookup zones are used to resolve hostnames to IP addresses. In Active Directory environments, these zones store DNS records that allow clients and server to locate resources and services in the network.
+Forward lookup zones are used to resolve hostnames to IP addresses. In Active Directory, these zones store DNS records that allow clients and server to locate resources and services in the network.
 
 ## Objectives  
 - Explain the purpose of forward lookup zones
