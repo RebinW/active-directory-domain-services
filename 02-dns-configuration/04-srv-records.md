@@ -81,6 +81,10 @@ We see that the query successfully returns both domain controllers. the priority
 
 After DNS returned the hostnames for the domain controller, nslookup automatically resolves the hostnames using A records.
 
+In the privious lab about forward lookup zones, I briefly explain the difference between the two forward lookup zones msdcs.klarstroem.local and the klarstroem.local zone. I said that the msdcs is used to locate AD infrastructure and this is exactly what see see in this lab. 
+
+The first DNS query a client sends when trying to logon is _ldap._tcp.dc._msdcs.klarstroem.local, this query is answered from the _msdcs.klarstroem.local zone. This zone contains the SRV records that identify domain controllers. The response is going to be hostnames, and then the client must resolve the hostname so it sends another DNS query, this time that query is answered from the primary forward lookup zone klarstroem.local because this zone holds A records.
+
 ## Results
 The SRV records stored in DNS allow domain-joined devices to locate domain controller and other services automatically. These records enable clients to dynamically discover available services instead of relying on static server configs. 
 
