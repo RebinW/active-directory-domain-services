@@ -55,18 +55,47 @@ Steps in the New Zone Wizard:
 
   Example of PTR records that will appear inside the zone:
   -  10 -> dc01.klarstroem.local
-  - Full example: 10.56.168.192.in-addr.arpa -> dc01.klarstroem.local
+  - Full example: 10.56.168.192.in-addr.arpa -> dc01.klarstroem.local. DNS resolves names from right to left, and therefore it address looks a bit strange.
+  - The zone itself represents the network: 192.168.56.0/24 so the reverse zone becomes 56.168.192.in-addr.arpa. Inside the zone we then store PTR records such as 10 -> dc01.klarstroem.local.
 ![Network ID](screenshots/networkid.png)
 
   
-- **Dynamic updates:** It asks us whether we want to allow dynamic updates to enable DNS client computers to register and dynamically update their resource records with the DNS servers, this is the recommended approch my Microsoft.
+- **Dynamic updates:** It asks us whether we want to allow dynamic updates to enable DNS client computers to register and dynamically update their resource records with the DNS servers, this is the recommended approch my Microsoft. The firste, Secure dynamic updates option, simply means that only clients that are domain-joined and thereby are authenticated are having their DNS data updated in the zones.
 ![Dynamic updates](screenshots/dynamicupdates.png)
 
 #### Dynamic PTR records registration
+PTR records can be created manually, but can as mentioned above also be created automatically "dynamically", this is only possible if the following conditions are met:
+- Condition 1: A reverse lookup zone exists "We just created one above"
+- Condition 2: Dynamic DNS updates are allowed "We allowed Dynamic updates in the last step of the zone creation"
 
+When a domain joined computer registers its A record dynamically, it attempts to also register the PTR record for its IP address, again this will only happen if the two above conditions are met.
+
+To make it crystal clear, dynamic DNS updates are of course directly related to DHCP. When a client recieves an IP address from a DHCP server, it attempts to register its DNS records, this happen for both A records and PTR records automatically. If the client later recieves an new IP address, it updates the records.
+- Old PTR record is automatically removed.
+- New PTR record is automatically created.
+
+Who actually updates these DNS information? DNS updates can be enabled and handled by the client ifself, but since DHCP if the one assigning IP addresses it is best practice to configure DHCP to handle this. DHCP keeps track, when lease expires or changes, DHCP updates or removes the records.
 
 ## Verification
+To verify the zone was created successfully and that PTR records can resolve IP addresses to hostnames, i'm going to create a PTR record manually, and test resolution using nslookup. 
+
+Because the reverse lookup zone was created after the forward lookup records already existed for dc01 and dc02, PTR records were not automatically generated for existing recources. DNS only creates PTR records when a new record is registered or when dynamic DNS registration occurs. Existing records should therefore be added manually.
+
+**Manually creating PTR record for DC01:**
+In the reverse lookup zone -> right click -> New Pointer (PTR):
+![PTR for dc01](screenshots/ptrdc01.png)
+
+- Host IP address: I simply added 10 since the full static address for dc01 is 192.168.56.10
+- Host name: you can manually write the hostname, but it is best practice to choose the corresponding recourse in the browse menu, and locate its A record in the forward lookup zone, it will automatically fill the field with dc01.klarstroem.local
+
+In later module, when I join clients to the domain I will also show the automatic creation of A, AAAA, and PTR records.
 
 ## Results
+The reverse lookup zone successfully allows IP addresses to be resolved to hostnames. PTR records stored in the zone enable admins and systems/ applications to identify hhosts when only IP addresses are known.
+
+**Testing using nslookup**
+After we have successfully created the PTR record, I opened command promt and tested the record:
+![Testing](screenshots/nslookuptest.png)
 
 ## Lessons Learned
+This lab demonstrated how reverse lookup zones complement forward lookup zones by enabling IP to hostnames resolution. Revers DNS is particularly useful when analyzing logs, monitoring systems, or troubleshooting network activity.
