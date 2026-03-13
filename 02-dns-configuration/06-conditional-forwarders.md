@@ -45,6 +45,15 @@ After a VPN or private network connection is established between the two network
 A conditional forwarder can then be configured so that queries for the domain partner.local are forwarded to the DNS server responsible for that domain:
 ![example](screenshots/conditionalforwarder.png)
 
+#### Stub Zones:
+Stub zones provide an alternative for resolving names in external DNS namespaces. A stub zone contains a limited subset of DNS records from another zone that allows DNS server to identify the authoritative DNS server for that domain.
+
+Stub zones contain the following records:
+- SOA record
+- NS record
+- A record (glue records)
+
+Instead of manually defining the DNS server as in conditional forwarders, stub zones automatically learn which DNS server are authoritative for the other domain. This ensures that the DNS server can dynamically learn and maintain correct information of the authoritative DNS infrastructure for that zone.
 
 ## Verification
 Because the my environment only contains a single domain, conditional forwarders and stub zones were not configured. In a multi-domain environment, verification would involve testing name resolution between domains.
