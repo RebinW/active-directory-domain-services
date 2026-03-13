@@ -1,4 +1,4 @@
-# DNSM Forwarders and External Name Resolution
+# DNS Forwarders and External Name Resolution
 
 ## Overview  
 Internal DNS servers are responsible for resolving names within the organization's own network, such as domain controllers, servers, client machines, and other resources. Both users and systems still need to access resources on the internet, such as websites and cloud services. Internal DNS servers are not authoritative for public internet domains, they therefore rely on other DNS servers to resolve those queries.
