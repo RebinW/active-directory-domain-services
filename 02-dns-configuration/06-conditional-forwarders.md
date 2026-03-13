@@ -13,5 +13,3 @@
 ## Results
 
 ## Lessons Learned
-
-## Next steps
