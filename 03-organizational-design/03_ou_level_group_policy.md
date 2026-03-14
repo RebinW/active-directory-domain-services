@@ -78,6 +78,39 @@ Now, all computers located inside the Workstation OU will receive this policy
 
 ![Policy applied to OU](screenshots/policyapplied.png)
 
+#### Create a user configuration policy:
+The next step is to create a second policy that targets user accounts. This policy will modify a small user environment setting to demonstrate how user policies can also be applied through OUs.
+
+**Step 1.**  
+Just as in the previous example, we first need to create the policy under User Group Object:
+
+![new user policy](screenshots/userdesktoppolicy.png)
+
+**Step 2. Enable Prevent changing desktop background**  
+Now that the policy has been created, the next step is to define the configuration it will enforce. In this example the policy will prevent the user from changing their desktop background.
+
+Right click on the policy and select *Edit*  
+Navigate to: 
+- User configuration
+- Policies
+- Administrative templates
+- Control Panel
+- Personalization
+
+Locate the setting: Prevent changing desktop background -> Set policy to enabled:
+![apply user policy](screenshots/applyuserpolicy.png)
+
+
+**Step 3: Link the user policy to the Users OU**
+The final step is to link the policy to the Organizational Unit containing the user accounts.
+
+- Navigate to: klarstroem -> 01_Users
+- Right click the OU and select Link to Existing GPO
+- Choose User Desktop Policy
+
+Now all users inside 01_Users will recieve this policy, and of course the child OUs within 01_Users will inherit the policy.
+![Link user policy](screenshots/linkuserpolicy.png)
+
 ## Verification
 
 ## Results
