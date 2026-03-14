@@ -56,7 +56,23 @@ After I created the first OU 00_Admins, I then went ahead and created the rest t
 
 These OUs seperate the major object types used in the environment. This seperation improves administrative control and simplifies the application of Group Policy which will be demonstrated in the next lab.
 
-#### Create the 
+#### Create the child OUs in the within the top-level OUs
+
+Top Level OU: 01_Users:
+- Child OU: Aarhus
+    - Child OU: Trading
+    - Risk_Management
+    - IT
+    - Finance
+    - HR        
+
+This structure reflects how users are often organized within departments in real organizations. In a real organization we would normally have more locations than just Aarhus, but this is just for the project to show how it could be structured.
+
+I went ahead and created additional child OUs under the top-level OUs already created. Once again this isn't the final design and architecture, this is the starting point so I can move forward in my project.
+
+![Structure](screenshots/childous.png)
+
+
 ## Verification
 
 ## Results
