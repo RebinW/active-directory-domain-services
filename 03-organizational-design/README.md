@@ -1,13 +1,62 @@
-# Title
+# Organizational Unit Architecture and Design
 
 ## Overview
+Organizational Units are containers in Active Directory used to organize objects such as users, computers, groups, and service accounts/ applications. Organizational Units provide a structured way to manage objectives within a domain.
+
+OUs have two main administrative functions. They allow admins to apply Group Policy to specific sets of objects and they allow delegation of administrative tasks without giving domain-wide privileges. A common design approch is to organize OUs by object type first and then location or department. This simplifies Group Policy inheritance and administrative delegation.
+
+In this lab the OU architecture is designed and implemented for the klarstroem domain. The structure reflects how many organizations seperate users, groups, workstations, servers to maintain clear boundaries.
 
 ## Objectives
+- Understand the purpose or Organizational Units in Active Directory
+- Design a scalable OU structure for Klarstroem
+- Implement the OU hierarchy for Klarstroem
+- Preopare the environment for identity management and Group Policy
 
 ## Environment
+Domain: klarstroem.local
+Network: 192.168.56.0/24
+
+DC01:
+- Windows Server domain controller
+- DNS Server role
+  
+DC01:
+- Windows Server domain controller
+- DNS Server role
 
 ## Implementation
+#### Creating the top-level OUs/ Root OUs
+First, I'm going to create the top-level organizational units:
+1. Server Manager -> Tool -> AD Users and Computers:
+2. Right click on the klarstroem.local domain
+3. NEW -> Organizational Unit
 
+![New organizational unit](screenhots/newou.png)
+
+Next, I'll type the new name of the first new top-level Organizational Unit "00_Admins". I also ensure the *Protect container from accidental deletion* is checked, this ensures the OU cannot be deleted.
+
+![First OU](screenshots/newadminou.png)
+
+NOTE: If for any reason we would want to delete an OU that had the *Protect container from accidental deletion* option checked, we would then have to:
+1. Enable advanced features under View at the top of the window
+2. Right click on the OU we want to delete -> Properties
+3. Choose the object tab -> Uncheck *Protect container from accidental deletion*
+4. Now we would be able to delete the OU.
+
+![Enable deletion](screenshots/enabledeletion.png)
+
+After I created the first OU 00_Admins, I then went ahead and created the rest top-level OUs: 
+- 01_Users
+- 02_Groups
+- 03_Workstations
+- 04_Servers
+- 05_Server_Accounts
+- 06_Disabled_Objects
+
+These OUs seperate the major object types used in the environment. This seperation improves administrative control and simplifies the application of Group Policy which will be demonstrated in the next lab.
+
+#### Create the 
 ## Verification
 
 ## Results
