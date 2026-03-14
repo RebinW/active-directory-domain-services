@@ -32,7 +32,7 @@ First, I'm going to create the top-level organizational units:
 2. Right click on the klarstroem.local domain
 3. NEW -> Organizational Unit
 
-![New organizational unit](screenhots/newou.png)
+![New organizational unit](screenshots/newou.png)
 
 Next, I'll type the new name of the first new top-level Organizational Unit "00_Admins". I also ensure the *Protect container from accidental deletion* is checked, this ensures the OU cannot be deleted.
 
