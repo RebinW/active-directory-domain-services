@@ -59,7 +59,10 @@ Computer Configuration -> Policies -> Windows Settings -> Local Policies -> User
 These settings define which accounts have privileges on domain controllers and control security auditing.
 
 ## Verification
+We're not going to make any changes to the default policies, and therefore this section will remain empthy.
 
 ## Results
+The domain contains the two default Group Policy Objects that provide the baseline security settings for the Active Directory environment.
 
-## Lessons Learned
+The Default Domain Policy controls domain-wide authentication settings such as password rules and account lockout policies. The Default Domain Controller Policy focuces on protecting domain controllers by defining security permissions and auditing rules.
+
