@@ -76,7 +76,7 @@ Return to the Group Policy Management Console and navigate to:
 
 Now, all computers located inside the Workstation OU will receive this policy
 
-![Policy applied to OU](scrrenshots/policyapplied.png)
+![Policy applied to OU](screenshots/policyapplied.png)
 
 ## Verification
 
