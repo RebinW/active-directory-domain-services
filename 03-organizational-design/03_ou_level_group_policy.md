@@ -112,10 +112,23 @@ Now all users inside 01_Users will recieve this policy, and of course the child 
 ![Link user policy](screenshots/linkuserpolicy.png)
 
 ## Verification
+At this stage of the project no users or client devices have been created or joined to the domain yet. Because of this it is not possible to fully verify the policies on a domain-joined system.
+
+Still, the policies can be verified within the Group Policy Management Console. The Console confirms that the policies have been successfully created and linked to the correct OU.
+
+Once domain joined workstations and user accounts are created later in the project, the policies will automatically apply to those objects through OU inheritance.
 
 ## Results
+Two example GPO were successfully created and linked to the OU structure created earlier in the project.
+
+The *Workstation Security Baseline* is linked to the Workstation OU and will apply to all devices located within that OU. The *User Desktop Policy* is linked to the Users OU and will apply to all users located in that OU and its child OUs.
 
 ## Lessons Learned
+This lab demonstrates how GPO can be created and linked to OUs in order to enforce configuration settings within specific parts of the directory structure.
+
+It also shows how policies applied at higher levels of the OU hierarchy automatically apply to child OUs through inheritance. This allows admins to enforce consistent configurations across multiple departments or locations without having to configure each one individually.
+
+Once again, in real organizations many different policies would normally be implemented. In this project only a small number of example policies were created in order to demonstrate how OU level policy enforcement works.
 
 **Note on Hybrid Identity:** The policies configured in this lab apply only to the on-premise environment. When users and devices are later synchronized to Entra ID using Entra Connect, these Group Policy settings are not automatically transferred to the cloud.
 
