@@ -15,8 +15,68 @@ For this project only a few examples will be configured. The purpose of this lab
 - Create example policies targeting users and workstations
   
 ## Environment
+Domain: klarstroem.local Network: 192.168.56.0/24
+
+DC01:
+
+Windows Server domain controller
+DNS Server role
+DC01:
+
+Windows Server domain controller
+DNS Server role
 
 ## Implementation
+In this lab two simple GPO will be created and applied to the OU structure that was created in the previous lab. The goal is to demonstrate how policies can be configured and linked to OUs so they automatically apply to the objects inside those OUs.
+
+The first policy will target workstation devices and enforce a simple security setting. The second policy will target accounts and modify a small user environment configuration. These examples are intentionally simple and are only meant to show how policies can be applied and managed within the directory.
+
+####
+
+**Step 1: Open Group Policy Management Console.**  
+To begin configuring policies, the Group Policy Management tool must be opened. This management tool allows us to create, modify, and link Group Policy Objects.
+
+- Open Server Manager -> Tools -> Group Policy Management
+- Navigate to: Forest -> klarstroem.local -> Domains -> Klarstroem.local
+
+**Step 2: Create new workstation policy.**
+Before applying any settings, a new Group Policy Object must first be created. This object will later contain the workstation security configuration.
+
+Right click on the *Group Policy Object*
+- New
+- Name policy: Workstation Security Baseline
+
+![new policy](screenshots/newworkstationpolicy.png)
+
+**Step 3: Configure the workstation policy**
+Once the object has been created "Workstation Security Baseline", the next is to define the settings that the policy will enforce. In this example a simple security configuration will be applied taht automatically locks a workstation after a perioed of inactivity.
+
+Right click on the new policy and click edit.  
+Navigate to: 
+- Computer Configurations
+- Policies
+- Windows settings
+- local policies
+- security options
+
+Then I found the **Interactive logon: Machine inactivity limit**
+- configured the value to 900 seconds
+
+This setting will automatically lock the workstation after 15 mins of inactivity.
+
+![new rule](screenshots/inactivity.png)
+
+**Step 4: Link the policy to the Workstations OU.**  
+After configuring the policy it then must be linked to an Organizational Unit so it can apply to the correct objects.
+
+Return to the Group Policy Management Console and navigate to:
+- klarstroem.local -> 03_Workstation
+- Right click on the OU and select link an Existing GPO
+- Choose: Workstation Security Baseline
+
+Now, all computers located inside the Workstation OU will receive this policy
+
+![Policy applied to OU](scrrenshots/policyapplied.png)
 
 ## Verification
 
