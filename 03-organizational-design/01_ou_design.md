@@ -68,15 +68,21 @@ Top Level OU: 01_Users:
 
 This structure reflects how users are often organized within departments in real organizations. In a real organization we would normally have more locations than just Aarhus, but this is just for the project to show how it could be structured.
 
-I went ahead and created additional child OUs under the top-level OUs already created. Once again this isn't the final design and architecture, this is the starting point so I can move forward in my project.
+I went ahead and created additional child OUs under the top-level OUs already created. Once again this isn't the final design and architecture, this is the starting point so I can move forward in my project. I might create additional child OUs as i move forward with my project, but for now this shows how Organizational Units can be structured.
+
+## Verification
+This screenshots shows that I have created the top-level OUs and within the Top-level OUs I have created the child OUs. One again i'm probably going to add to the design as the project moves forward.
 
 ![Structure](screenshots/childous.png)
 
-
-## Verification
-
 ## Results
+The domain now contains a structured OU hierarchy that seperates users, groups, devices, and servers. This design prepares the project for future administrative tasks such as identity lifecycle management, policy enforcement, and access control.
 
 ## Lessons Learned
+Designing and OU architecture is an important early step when deploying Active Directory. A well designed OU architecture simplifies management, policy enforcement, and administrative delegation.
 
-## Next steps
+Seperating objects by type provides flixibility when applying Group Policy and managing different objects such as users, workstations, and servers.
+
+For this lab only the Aarhus headquarters structure is implemented. Still the OU design allows additional locations to be added in the future without restructing the domain.
+
+
