@@ -17,8 +17,46 @@ The purpose of this lab is to show these default policies, udnerstand where they
 - Explore domain-wide settings
 
 ## Environment
+Domain: klarstroem.local
+Network: 192.168.56.0/24
 
+DC01:
+- Windows Server domain controller
+- DNS Server role
+  
+DC01:
+- Windows Server domain controller
+- DNS Server role
+  
 ## Implementation
+#### Locate the Default Group Policies
+1. Open Server Manager -> Tools -> Group Policy Management
+2. Expand the following: Forest -> klarstroem.local -> domains -> klarstroem.local
+3. Under the domain klarstroem.local we see the two default policies **Default Domain Policy** and **Default Domain Controller Policy**
+
+These policies were automatically created when the domain was deployed.
+![Default policies](screenshots/defaultpolicies.png)
+
+#### Explore the default Domain Policy
+
+To explore the Default Domain Policy we right click on it and choose edit. Navigate to:
+Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Account Policies. 
+
+In this section we'll see the main authentication settings for the domain:
+![Default domain policy](screenshots/defaultdomainpolicy.png)
+
+Examples of password policy settings:
+- Minimum password length
+- Password complexity requirements
+- Maximim password age
+- Password history
+
+#### Explore the Default Domain Controllers Policy
+To explore the Default Domain Controllers Policy we right click on it and choose edit. Navigate to:
+Computer Configuration -> Policies -> Windows Settings -> Local Policies -> User Rights Assignment. 
+![Default Domain controllers policy](screenshots/defaultdomaincontrollerpolicy.png)
+
+These settings define which accounts have privileges on domain controllers and control security auditing.
 
 ## Verification
 
