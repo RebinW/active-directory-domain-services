@@ -57,8 +57,10 @@ I going to run the folliwing command to verify the configuration:
 
 ![Confirm configuration](screenshots/confirmconfig.png)
 
+As seen under the MemberOf section, it confirm that Mark has been added to the Trading_Read security group, and Line has been successfully added to the Trading_Write group.
+
 ## Results
+The users have been successfully assigned to their groups. The access model is now established, where users inherit access through group membership rather than direct assignment.
 
 ## Lessons Learned
-
-## Next steps
+This lab shows how group membership acts as the link between users and acess control. Instead of managing permissions for each individual user, access can be controlled centrally through groups. This simplifies administration and reduces the risk of misconfiguration.
