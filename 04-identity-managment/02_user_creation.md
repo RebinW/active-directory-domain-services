@@ -61,7 +61,14 @@ To configure the above mentioned attributes, I simply right clicked on the user 
 ![configuring attributes](screenshots/attributes.png)
 
 ## Verification
+To verify that I have successfully created the users and added the required additional attribute we could ruun the following PowerShell script:
+- Get-ADUser -Identity mark.nielsen -Properties * | Format-List
+  - -Properties: shows all attributes
+  - Format List: prints everything in readable format
 
+The output for this command is really long, and therefore i chose to specify the attributes we added instead:
+
+![verifying user creation](screenshots/userverification.png)
 
 ## Results
 User accounts have been successfully created with additional relevant attributes. The users are now properly structured within the organization and contain the necessary information to support access control and future synchronization to Entra ID.
