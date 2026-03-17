@@ -43,10 +43,10 @@ Right-click on the specific group -> Properties -> members tab -> Add
 
 All methods achieve the same result. In this lab, the first option is used as it feels like the most logical to me.
 
-- mark.nielsen is added to Trading_Read:
+- **mark.nielsen is added to Trading_Read:**
   ![Adding mark to trading](screenshots/addmark.png)
 
-- line.hansen is added to Trading_Write:
+- **line.hansen is added to Trading_Write:**
   ![Adding Line to trading](screenshots/addline.png)
 
 
