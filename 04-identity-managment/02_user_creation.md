@@ -28,7 +28,7 @@ Next, I chose *User must change password at next logon*, this is a common approc
 ![new password](screenshots/password.png)
 
 Here is the final output:
-![final output](screenshots/final.png)
+![final output](screenshots/finaloutput.png)
 
 After I had successfully created the user Mark Nielsen, I then went ahead and created an additional user named **Line Hansen**
 
