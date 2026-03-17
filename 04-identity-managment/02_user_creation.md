@@ -38,15 +38,16 @@ After creating the user, additional attributes are configured to enrich the iden
 I chose to define the following attributes:
 
 General tab:
-- Display name
-- Email address
+- Display name: Mark Nielsen
+- Email address: mark.nielsen@klarstroem.com
+- Office "Physical location": Aarhus
 
 Organization tab:
-- Department (Trading)
-- Job title
+- Department: Trading
+- Job title: Jr. Trader
 
 Address tab:
-- Country
+- Country: Denmark
 
 The attributes are important because they provide context about the user and are used in several scenarios:
 - Department can be used for grouping and access control
@@ -59,9 +60,11 @@ To configure the above mentioned attributes, I simply right clicked on the user 
 
 ![configuring attributes](screenshots/attributes.png)
 
-
 ## Verification
 
+
 ## Results
+User accounts have been successfully created with additional relevant attributes. The users are now properly structured within the organization and contain the necessary information to support access control and future synchronization to Entra ID.
 
 ## Lessons Learned
+This lab showed that creating a user account is only a small part of identity amanagement. The attributes assigned to the user play an important role in defining how the identity is used across systems. Correct configured attributes improve clarity, support automation later, and are required for integration with cloud services such as Entra ID.
