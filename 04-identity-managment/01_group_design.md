@@ -87,10 +87,13 @@ At this point, the groups do not yet enforce any permissions.
 Their purpose is to act as containers for users. In later stages, these groups will be assigned permissions to resources such as shared folders.
 
 ## Verification
+After creating the groups, I checked that they were placed in the correct location under 02_Groups -> Trading. I also confirmed that both groups were created as Security groups with Glocal scope. The naming was reviewed to make sure it followed the format I decided on, and I verified that the groups appear correctly in Users and Computers.
 
 ## Results
+At this point, I now have a simple but structured set of groups for the Trading department. The groups reflect different access levels and are ready to be used when assigning users and later when configuring permissions on shared resources.
 
 ## Lessons Learned
+This step made it clear why groups are used instead of assigning permissions directly to users. It is much easier to manage access when everything is handled through groups. I also saw how important it is to keep a clean structure in AD, especially when seperating users and groups.
 
 ## Next steps
 
