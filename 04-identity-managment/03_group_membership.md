@@ -49,9 +49,13 @@ All methods achieve the same result. In this lab, the first option is used as it
 - **line.hansen is added to Trading_Write:**
   ![Adding Line to trading](screenshots/addline.png)
 
-
-
 ## Verification
+After assigning group membership, each user is checked to confirm correct configuration.
+
+I going to run the folliwing command to verify the configuration:
+- Get-ADUser USER -Properties MemberOf:
+
+![Confirm configuration](screenshots/confirmconfig.png)
 
 ## Results
 
