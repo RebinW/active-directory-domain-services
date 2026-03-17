@@ -6,10 +6,9 @@ In the previous labs, the required security groups were created for the Trading 
 With both users and groups in place, the next step is to connect them. This is done by adding the users to the relevant groups. This step is important because users do not recieve access directly. Instead, access is managed through group membership.
 
 ## Objectives  
-
-
-## Environment  
-
+- Assign users to the correct security groups
+- Establish a role-based access model using groups
+- Prepare users for access control in the next lab
 
 ## Implementation  
 #### Step 1. Identify users and groups
