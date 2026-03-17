@@ -32,6 +32,33 @@ Here is the final output:
 
 After I had successfully created the user Mark Nielsen, I then went ahead and created an additional user named **Line Hansen**
 
+#### Step 2: Attribute configuration.
+After creating the user, additional attributes are configured to enrich the identity of the accounts.
+
+I chose to define the following attributes:
+
+General tab:
+- Display name
+- Email address
+
+Organization tab:
+- Department (Trading)
+- Job title
+
+Address tab:
+- Country
+
+The attributes are important because they provide context about the user and are used in several scenarios:
+- Department can be used for grouping and access control
+- Country is a must when assigning licenses in Entra ID
+- Email is used for communication and identity in cloud services
+
+The specific attributes that must be filled depend on company policy. In this lab, only a few is configured to demonstrate the concept.
+
+To configure the above mentioned attributes, I simply right clicked on the user "Mark Nielsen" and then clicked properties:
+
+![configuring attributes](screenshots/attributes.png)
+
 
 ## Verification
 
