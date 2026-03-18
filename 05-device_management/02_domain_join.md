@@ -36,6 +36,14 @@ I then had to provide domain administrator credentials to authorize the operatio
 ![Authenticate using admin credentials](screenshots/admincredentials.png)
 ![Successfully joined the domain](screenshots/successfulljoined.png)
 
+#### Logon using domain user
+After reboot, the login screen allowed authentication using domain credentials. I now logged on to the client usinf the domain user Mark Nielsen:
+![Logon](screenshots/loginmark.png)
+
+#### 
+On the domain controller, the device by default appears in the "Computers" container. The device was moved to the "Workstations" organizational unit to ensure structure and policy application:
+![Moving the client](screenshots/moveclient.png)
+
 ## Verification
 
 ## Results
