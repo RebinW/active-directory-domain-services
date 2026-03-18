@@ -29,10 +29,28 @@ A new virtual machine is created in VirtualBox. During creation the following re
 - 4 GB RAM
 - 2 CPUs
 - 50 GB dynamically allocated disk
-
+  
 I downloaded a Windows 11 ISO file, and during installation I made sure to choose Windows 11 **Pro** since other versions do not support domain-join capabilities:
 ![Windows 11 Pro](screenshots/image.png)
 
+#### Step 2. Configure networking
+To ensure communication within the environment, the virtual machine is configured with two network adapters:
+- Host-Only adapter: Used for internal communication "LAN"
+- NAT adapter: Used to provide internet access "WAN"
+
+I added these two adapter directly in VirtualBox by right clikking on the CLIENT01 -> Settings -> Network:
+
+![Network adapters](screenshots/networkadapters.png)
+
+After the two adapters had been added, I then went and configured the network settings in the VM. 
+
+1. Internal network adapter "Host-Only":
+![Host-Only adapter](screenshots/internal.png)
+
+2. Internet adapter "NAT":
+   ![NAT Adapter](screenshots/internet.png)
+
+   
 ## Verification
 
 ## Results
