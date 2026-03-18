@@ -44,15 +44,30 @@ I added these two adapter directly in VirtualBox by right clikking on the CLIENT
 
 After the two adapters had been added, I then went and configured the network settings in the VM. 
 
-1. Internal network adapter "Host-Only":
+**Internal network adapter "Host-Only"**
 ![Host-Only adapter](screenshots/internal.png)
 
-2. Internet adapter "NAT":
+**Internet adapter "NAT"** is using DHCP, VirtualBox provides the necessary settings for external communication.
    ![NAT Adapter](screenshots/network.png)
 
    
 ## Verification
+To verify the configuration, the network settings were reviewed using the ipconfig /all command. This confirms that the correct IP addresses, subnet masks, and DNS settings are applied:
+![IP Confirm](screenshots/ipconfig.png)
+
+Connectivity to the domain controller was tested using a ping command with the domain controller's IP address:
+![Confirm connectivity](screenshots/ping.png)
+
+DNS resolution was also tested using nslookup against the domain name, confirming that the client cloud resolve the domain through the configured DNS server:
+![nslookuo](screenshots/nslookupklarstroem.png)
+
+I also pinged the domain controller using its fully qualified domain name "FQDN", which also succeeded. This confirms taht DNS resolution and name lookup works correctly:
+![FQDN](screenshots/fqdn.png)
 
 ## Results
+The client virtual machine is now fully configured and able to communicate with the domain controllers. Network connectivity and DNS resolution are working as expected, and the system is prepared to be domain joined in the next lab.
 
 ## Lessons Learned
+This step showed how important correct network configuration is in an Active Directory environment. Even if the system is installed correctly, domain join will fail if DNS is not configured right.
+
+It also became clear that DNS plays a central role in AD, as it is used to locate the domain controllers and services. Simply having network connectivity is not enough wiothout proper name resolution.
