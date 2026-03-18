@@ -40,12 +40,17 @@ I then had to provide domain administrator credentials to authorize the operatio
 After reboot, the login screen allowed authentication using domain credentials. I now logged on to the client usinf the domain user Mark Nielsen:
 ![Logon](screenshots/loginmark.png)
 
-#### 
+#### Relocating client to the correct OU
 On the domain controller, the device by default appears in the "Computers" container. The device was moved to the "Workstations" organizational unit to ensure structure and policy application:
 ![Moving the client](screenshots/moveclient.png)
 
 ## Verification
+The domain join was verified by logging into the client using the domain user mark.nielsen@klarstroem.local. Successful login confirmed that authentication was handled by Active Directory.
+
+The fact that the device was visible and appeared in Active Directory Users and Computers under Computers also confirms that the domain controller had registered the client correctly.
 
 ## Results
+The client device was successfully joined to the domain and is now a centrally managed asset. Domain authentication was working as expected, and the device was correctly registered and organized within AD.
 
 ## Lessons Learned
+The lab showed that DNS configuration is critical for domain join operations. Without correct name resolution, the client connot locate the domain controller.
