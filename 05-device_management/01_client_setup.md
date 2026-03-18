@@ -48,7 +48,7 @@ After the two adapters had been added, I then went and configured the network se
 ![Host-Only adapter](screenshots/internal.png)
 
 2. Internet adapter "NAT":
-   ![NAT Adapter](screenshots/internet.png)
+   ![NAT Adapter](screenshots/network.png)
 
    
 ## Verification
