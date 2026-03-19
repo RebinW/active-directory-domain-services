@@ -68,5 +68,15 @@ Remote access was also tested from a domain-joined client machine using a standa
 ![Remote Access confirmed](screenshots/remoteaccess.png)
 
 ## Results
+A dedicated volume for file sharing was successfully created and configured on the server. The Z drive was established and used to store shared organizational data separately from the system drive.
+
+A centralized network share named SharedNetworkFolders was created and linked to the local path. The share was successfully published and made accessible over the network.
 
 ## Lessons Learned
+During the setup, the shared resources could not be located from the client machine, even though connectivity test such as ping and DNS resolution were working correctly. This demonstrated that network connectivity alone is not sufficient to ensure access to shared resources. The issue was related to the active network profile and its settings.
+
+The showed the importance of verifying which network profile is active on both the server and the client. Windows chooses between domain, private and public profiles, each with different security settings. In this case, incorrect settings within the active profile prevented visibility and access to shared resources.
+
+Another key takeaway is that network discovery is not required for accessing shared resources directly. While enabling network discovery can make servers visible in the Network view, reliable access should always be tested using the direct paths.
+
+I know hosting file shares directly on a domain controller is not considered best practice in production. In a real organization, file services would typically be hosted on dedicated file servers to ensure seperation of roles, improved security, and better scalability. In this lab, the domain controller was used for file sharing just for demonstration purposes.
