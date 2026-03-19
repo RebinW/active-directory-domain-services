@@ -40,7 +40,24 @@ The new drive was formatted using NTFS, since NTFS supports the permission model
 At this point the drive has been successfully created.
 
 #### Step 2. Create the root folder structure.
+After the Z drive and Shares volume was created, the next step was to configure a network share from that volume through Server Manager.
 
+This was done by opening Server Manager and navigating to:
+File and Storage services -> Volumes -> Disks
+
+From here, the newly created volume was located and right-clicked, and the New Share option was selected. This opened the New Share Wizard, which was then used to configure the shared folder directly from the dedicated storage volume:
+![New Share option](screenshots/newshare.png)
+
+#### Step 3. Select the share profile and storage volume
+Inside the New Share Wizard, the SMB share - Quick profile was selected. This profile is for standard Windows file sharing and is suitable for general organizational file share, the description of the different options are shown to the right:
+![Easy deployment](screenshots/quickprofile.png)
+
+After selecting the share profile, the share location was configured on the dedicated Z: volume. At this point, the wizard was pointing to the Z: drive as the storage location for the new share. The purpose is to ensure that the shared data will be stored on the dedicated data volume rather than on the system drive.
+![folder location](screenshots/location.png)
+
+#### Define the share name and network path
+After the path had been specified, the share was assigned the name: SharedNetworkFolders, this resulted in the following path: **Z:\Shares\SharedNetworkFolders**
+![Selecting the share name](screenshots/sharename.png)
 
 ## Verification
 
