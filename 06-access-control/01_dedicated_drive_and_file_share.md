@@ -60,6 +60,12 @@ After the path had been specified, the share was assigned the name: SharedNetwor
 ![Selecting the share name](screenshots/sharename.png)
 
 ## Verification
+First, the local path was verified on the domain controller by opening File Explorer and navigating to the Z-drive: **Z:\Shares\SharedNetworkFolders**:
+![verify local path](screenshots/localpath.png)
+Additional verification using cmd:
+![Verify using cmd](screenshots/cmdverify.png)
+Remote access was also tested from a domain-joined client machine using a standard user account. From the client, File Explorer was opened and the server DC01 was chosen through the network. The share SharedNetworkFolders was visible and accessible, confirming that the network share had been successfully created:
+![Remote Access confirmed](screenshots/remoteaccess.png)
 
 ## Results
 
