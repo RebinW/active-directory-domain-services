@@ -141,6 +141,41 @@ This means:
 - Unauthorized folders are hidden
 
 ## Verification
+The implemented access control model was verified by testing user access from the domain-joined client machine using the two different user accounts.
+
+A test file was first created on the server to simulate shared data:
+- Location: Z:\Shares\SharedNetworkFolders\Trading
+- File Name: Test Document
+- Content: "This is a test"
+
+**1. Validation of Read-Only Access**
+- User: Mark Nielsen
+- Member of Trading_Read
+
+Test actions:
+- Accessed: DC01\SharedNetworkFolders\Trading
+- Opened the test document
+- Attempted to modify the document and save it
+- Attempted to create a new file inside the trading folder
+
+![Test](screenshots/modifymark.png)
+![Test](screenshots/createmark.png)
+
+Conclusion:
+- Read and execute permissions are working as intended
+- User can view content but cannot modify or create files
+
+**2. Validation of Read/Write Access**
+- User: Line Hansen
+- Member of Trading_Write
+
+Test actions:
+- Accessed DC01\SharedNetworkFolders\Trading
+- Opened test document
+- Attempted to modify and save
+- Attempted to create a new file inside the folder
+
+![Test](screenshots/createline.png)
 
 ## Results
 
