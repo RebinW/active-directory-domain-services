@@ -177,6 +177,21 @@ Test actions:
 
 ![Test](screenshots/createline.png)
 
+Conclusion:
+- Modify permission are working correctly
+- User can create edit, and update files
+
+**3. Validation of Access-Based Enumeration**
+To validate folder visibility, I created an additional folder named HR: Z:\Shares\SharedNetworkFolders\HR
+
+Configuration:
+- Inheritance was disabled
+- The "Users Group was removed"
+- No access was granted to to Trading_Read or Trading_Write
+
+I was logged on with the user account Line Hansen on the client PC and I could not see the HR folder created in SharedNetworkFolders:
+![Enumeration](screenshots/enumeration.png)
+
 ## Results
 
 ## Lessons Learned
