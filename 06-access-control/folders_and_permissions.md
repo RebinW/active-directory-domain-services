@@ -192,6 +192,10 @@ Configuration:
 I was logged on with the user account Line Hansen on the client PC and I could not see the HR folder created in SharedNetworkFolders:
 ![Enumeration](screenshots/enumeration.png)
 
+Conclusion:
+- Access-Based Enumeration works as intended
+- Users can only see folders they have permission to access
+
 ## Results
 
 ## Lessons Learned
