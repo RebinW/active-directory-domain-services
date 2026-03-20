@@ -197,7 +197,15 @@ Conclusion:
 - Users can only see folders they have permission to access
 
 ## Results
+The access model worked as intended.
+
+Mark could access and read files but was not able to create or modify anything. Line had full working access and could create, edit, and save changes whitout any issues. Changes made by Line were visible on both the client and server.
+
+Access-Based Enumeration also worked correctly. The HR folder was not visible to either user, that confirmed that folder visibility follows permissions.
 
 ## Lessons Learned
+Default NTFS permissions are not secure by default. The "Users" group can include more access than expected.
 
-## Next steps
+Inheritance plays an important role. New folders inherint permissions automatically, so it is important to disable it and clean up permissions when creating restricted folders.
+
+Using group instead of assigning permissions directly to users makes the setup easier to manage and closer to how real organizations handles it.
