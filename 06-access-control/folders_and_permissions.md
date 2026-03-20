@@ -91,7 +91,54 @@ Permissions asssigned:
 - Trading_Write -> Modify
 
 ![Apply security groups](screenshots/applygroups.png)
-#### Step 6. 
+
+#### Step 6. Understand permission behaviour
+This is not a implementation step, but I still think it is worth documenting what the different NTFS permissions actually mean:
+
+Full control:
+- Grants all permission
+- Includes read, write, modify, delete, and permission management
+
+Modify:
+- Allows reading, writing, editing, and deleting files
+- Does not allow changing permissions or ownership
+
+Read and execute:
+- Allows opening and reading files
+- Allows running .exe files
+- Does not allow modification
+
+List folder contents:
+- Allows viewing files and subfolders inside a directory
+- Applies mainly to folders
+
+Read:
+- Allows viewing files and subfolders
+- Does not allow execution or modification
+
+Write:
+- Allows creating new files and folders
+- Allows writing to files
+- Does not always allow deletion of existing files
+
+Special Permissions:
+- Custom combination of permissions
+- Must be reviewed in Advanced settings
+
+#### Step 7. Maintain Root share permissions
+Permissions on the root folder were not modified: Z:\Shares\SharedNetworkFolders
+
+Reason:
+- The root folder acts as an entry point to the share
+- Access control is enforced at subfolder level "Trading"
+- This ensures users can access the share without exposing restricted data
+
+#### Step 8. Configure Access-Based Enumeration
+Access-Based Enumeration was enabled in a previous lab during the share "SharedNetworkFolders" creation
+
+This means:
+- Users only see folders they have access to
+- Unauthorized folders are hidden
 
 ## Verification
 
