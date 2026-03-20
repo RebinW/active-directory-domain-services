@@ -79,6 +79,14 @@ Groups:
 - Trading_Read
 - Trading_Write
 
+User mapping:
+- Mark Nielsen -> Trading_Read
+- Line Hansen -> Trading_Write
+
+Permissions asssigned:
+- Trading_Read -> Read and Execute
+- Trading_Write -> Modify
+
 
 
 ## Verification
