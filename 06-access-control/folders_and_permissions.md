@@ -11,7 +11,11 @@ This lab builds on lab 1 by expanding the file share into a structured file stor
 - Verify that users only access and view folders they are authorized to use
 
 ## Environment
+Domain: klarstroem.local  
+Domain controllers: DC01 &DC02
 
+Shared storage:
+- Share name: 
 ## Implementation
 
 ## Verification
