@@ -55,13 +55,16 @@ Inherited entities included:
 
 This is expected and normal in NTFS. All newly created folders inherit permissions from their parent unless inheritance is disabled.
 
-I observed that the "Users" group included not only read permissions, but also special permissions that allowed file creation. This goes against what I intended.
+I observed that the "Users" group included not only read permissions, but also special permissions that allowed file creation. This goes against what I intended:
+![Permissions](screenshots/permissions.png)
 
 #### Step 3. Disable inheritance on the Trading folder
 To enforce strict access control, inheritance was disabled on the Trading folder, steps: 
 1. Right-click Trading -> Properties -> Security -> Advanced'
 2. Click Disable inheritance
 3. Select -> Convert inherited permissions into explicit permissions
+
+![Disable inheritance](screenshots/inheritance.png)
 
 This ensures that existing groups stayed, but that we're now able to remove or modify groups as wanted.
 
@@ -87,7 +90,8 @@ Permissions asssigned:
 - Trading_Read -> Read and Execute
 - Trading_Write -> Modify
 
-
+![Apply security groups](screenshots/applygroups.png)
+#### Step 6. 
 
 ## Verification
 
