@@ -120,6 +120,9 @@ Next, I tested account lockout. I logged out and attempted to sign in as Line Ha
 After the account was logged, I signed back in as Anders and opened Line's account properties. The message indicating that the account was locked was visible. This time, the unlock account option was available and not greyed out. I selected the option and applied the changes. After unlocking the account, Linme Hansen was able to sign in again.
 ![Unlock account](screenshots/unlockaccount.png)
 
+At the end, I tested the delegation scope. While logged in as Anders, I attempted to manage users outside the Aarhus OU. users located in other locations were not accessible for administrative actions. This confirmd that the delegated permissions were correctly limited to the Aarhus OU:
+![Permission denied](screenshots/permissiondenied.png)
+
 ## Results
 
 ## Lessons Learned
