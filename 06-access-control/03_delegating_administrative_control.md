@@ -87,8 +87,9 @@ The key thing I checked was whether the permissions applied to **descendant user
 - Right click Aarhus OU -> Properties -> Security -> Advanced
 - The confirm: anders.mikkelsen appears with -> Applies to: Descendant User objects
 
+![Confirm permissions](screenshots/confirmpermissions.png)
 
-
+NOTE: on the screenshot above, there is an empty access field, I dobble clicked and checked what permission it holds and can confirm it is the **Write lockoutTime** permission.
 
 ## Verification
 
