@@ -70,6 +70,7 @@ The following permission were selected:
 - Change password
 - Read lockoutTime
 - **Write lockoutTime**
+- Create/ delete user objects
 
 These permissions allow the helpdesk account to:
 - View user account details
@@ -78,6 +79,13 @@ These permissions allow the helpdesk account to:
 
 Unlocking accounts specifically requires access to the lockoutTime attribute, which is why both read and write permissions for this attribute were selected:
 ![Permissions](screenshots/permissions1.png)
+
+#### Step 5. Verify delegation was applied
+After finishing the wizard, I verified that the permissions were applied correctly. This step helps catch mistakes early, especially if inheritance is misconfigured.
+
+The key thing I checked was whether the permissions applied to **descendant user objects**, meaning users inside Aarhus and its child OUs:  
+- Right click Aarhus OU -> Properties -> Security -> Advanced
+- The confirm: anders.mikkelsen appears with -> Applies to: Descendant User objects
 
 
 
