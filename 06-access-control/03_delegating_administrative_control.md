@@ -124,7 +124,13 @@ At the end, I tested the delegation scope. While logged in as Anders, I attempte
 ![Permission denied](screenshots/permissiondenied.png)
 
 ## Results
+The delegated helpdesk permissions worked as intended after the correct permissions were assigned.
+
+The helpdesk account was able to reset passwords and unlock accounts within the Aarhus OU. Ealier in the process the unlock option stayed unavailable, which helped me identify that the Write lockoutTime permission was missing. After adding this permissin, unlocking accounts worked.
+
+User account lockout behaviour followed the configured policy, and the helpdesk account was able to resolve locked accounts whitout requiring Domain admin privileges.
 
 ## Lessons Learned
+Delegation is highly dependent on the OU structure. Where permission are applied determines how far they spread. Starting delegation at the correct level/ OU makes management easier and avoids repeating the same configuration several times.
 
-## Next steps
+Permission in AD are split accross multiple entries. Seeing the same user appear several times in the permission list is normal and represents different individual permissions.
