@@ -91,6 +91,23 @@ The key thing I checked was whether the permissions applied to **descendant user
 
 NOTE: on the screenshot above, there is an empty access field, I dobble clicked and checked what permission it holds and can confirm it is the **Write lockoutTime** permission.
 
+#### Step 6. Configure Account Lockout Policy
+
+To test unlock functionality, I configured an account lockout policy. Without this, accounts would never lock, and it would not be possible to test whether delegation worked correctly.
+
+This step also reflects real-world security settings used to prevent repeated password guessing.
+
+I opened Group Policy Management:
+- Default domain policy -> Edit -> Windows settings -> Security settings -> Account policies -> Account lockout policy
+
+Configure: 
+- Account lockout threshold: 3 invalid attempts
+- Account lockout duration: 30 min
+- Reset lockout counter after: 30 min
+
+Then I applied the policed and ran **gpupdate /force** in cmd:
+![GPO, Lockoutpolicy](screenshots/lockoutpolicy.png)
+
 ## Verification
 
 ## Results
