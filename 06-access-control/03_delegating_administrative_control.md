@@ -109,6 +109,16 @@ Then I applied the policed and ran **gpupdate /force** in cmd:
 ![GPO, Lockoutpolicy](screenshots/lockoutpolicy.png)
 
 ## Verification
+After completing the delegation, I tested the configuration from a client machine using the helpdesk account Anders Mikkelsen.
+
+First, I verified password reset functionality. I logged in as Anders on the client PC and opened Active Directory Users and Computers. I navigated to the Aarhus -> Trading OU and selected Line Hansen. From there, I reset her password. The operation completed without errors, which confirmed that the reset password permission was working:
+![New password](screenshots/passwordchanged.png)
+
+Next, I tested account lockout. I logged out and attempted to sign in as Line Hansen using the wrong password several times. After the configured threshold was reached, the account became locked. This confirmed that the account lockout policy was active:
+![Lockout policy](screenshots/accountlocked.png)
+
+After the account was logged, I signed back in as Anders and opened Line's account properties. The message indicating that the account was locked was visible. This time, the unlock account option was available and not greyed out. I selected the option and applied the changes. After unlocking the account, Linme Hansen was able to sign in again.
+![Unlock account](screenshots/unlockaccount.png)
 
 ## Results
 
