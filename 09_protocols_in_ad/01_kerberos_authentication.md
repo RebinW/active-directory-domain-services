@@ -23,7 +23,35 @@ Client:
 - CLIENT01: Domain-joined Windows PC
 
 ## Implementation
+#### Step 1 - Client startup and domain controller discovery
+When the client computer starts, it recieves an IP and DNS configuration normally from DHCP, but in my case I have set static values. The DNS server assigned to the client is the domain controller.
 
+When the user logs in using a domain account, the client must first locate the available domain controllers before the authentication process can begin.
+
+The clienmt PC sends a DNS SRV query to locate the domain controllers providing LDAP services. The query searches for domain controllers registered under the LDAP service in the domain. The SRV query used by the client:
+- _ldap._tcp.dc._msdcs.klarstroem.local
+- _service_protocol.dc_msdcs.domainName
+
+Each part of this query:
+- _ldap: specifies the requested **service**. in this case, LDAP, which is used to communicate with Active Directory
+- _tcp: specifies the protocol used for communication. AD uses TCP for LDAP communication
+- dc: specifies that the client is seaching for domain controllers
+- _msdcs: represents Microsoft Domain Controller Services. this namespace stores service location records for domain controllers
+- klarstroem.local: specifies the domain name in which domain controllers are being located
+
+ So the full query means -> Locate all domain controllers in the klarstroem.local domain that provide LDAP services over TCP.
+
+ When the query is recieved by the DNS server, the DNS service searches for SRV records that match this above **exact query name: - _ldap._tcp.dc._msdcs.klarstroem.local**
+
+If the DNS server holds multiple DNS SRV records that match that exact query name, then multiple domain controllers will be returned. In my lab I have two domain controllers providing this exact service, and therefore it should return both:
+- DC01.klarstroem.local
+- DC02.klarstroem.local
+
+I wasn't satisfied, I wanted to know exactly where the DNS server stores these exact SRV records, and therefore I follwed this path in the DNS Manager on my domain controller:
+- Forward Lookup Zones -> _msdcs.klarstroem.local -> dc -> _tcp
+Inside this location we see two LDAP SRV records because I have deployed two domain controllers:
+
+![SRV records ldap](screenshots/srvrecords.png)
 
 
 ## Verification
