@@ -50,8 +50,16 @@ If the DNS server holds multiple DNS SRV records that match that exact query nam
 I wasn't satisfied, I wanted to know exactly where the DNS server stores these exact SRV records, and therefore I follwed this path in the DNS Manager on my domain controller:
 - Forward Lookup Zones -> _msdcs.klarstroem.local -> dc -> _tcp
 Inside this location we see two LDAP SRV records because I have deployed two domain controllers:
-
 ![SRV records ldap](screenshots/srvrecords.png)
+
+Each records holds:
+- Service: LDAP
+- Protocol: TCP
+- The dc.klarstroem.local string
+If we combine all of these we get exactly the above mentioned query: **_ldap._tcp.dc._msdcs.klarstroem.local**
+
+This is why when the query request and the SRV record match then the SRV records returns the hostnames seen at the bottom of the SRV record:
+![Domain controllers proving ldap](screenshots/ldaphosts.png)
 
 
 ## Verification
