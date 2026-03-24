@@ -61,6 +61,67 @@ If we combine all of these we get exactly the above mentioned query: **_ldap._tc
 This is why when the query request and the SRV record match then the SRV records returns the hostnames seen at the bottom of the SRV record:
 ![Domain controllers proving ldap](screenshots/ldaphosts.png)
 
+After the DNS server returns the list of domain controllers, the client must select one to contact.
+
+The client does normally not randomly pick one. It evaluates the values stored inside each SRV record seen above:
+- Priority: Specifies preference order. Lower values are preferred over higher
+- Weight: Used for load balancing when multiple domain controllers share same priority
+
+If multiple domain controllers have the same values for both priority and weight, the client then selects one randomly.
+
+In large organizations, domain controllers must often distributed across multiple sites. AD clients tries to select a domain controller that is located within the same site/ network because it improves performance and reduces network latency. It is in these situations those two values above mentioned would make more sense, than in my small home lab.
+
+#### Step 2 - Resolving domain controller hostnames to IP addresses
+After the client recieved the hostnames from the SRV query, the client must resolve the selected hostname into an IP address before communication can begin.
+
+Example: If the client selects DC01:klarstroem.local
+- The client then sends a second DNS query requesting the IP address associated with that hostname.
+- DMS then searches the Forward Lookup Zone -> klarstroem.local
+- Within this zone, an A record exists that maps DC01 to an IPv4 address
+![A record for dc01](screenshots/dc01arecord.png)
+
+This step allows the client to establish network communication with the selected domain controller. 
+
+If SRV record are missing or incorrect, the client will not be able to locate domain controller and the authentication cannot begin.
+
+#### Step 3 - Kerberos authentication service request (AS-REQ)
+After the client selected a domain controller and resolved its hostname to an IP address, the client is ready to authenticate using the Kerberos protocol.
+
+At this point, the client sends an authentication service request also called AS-REQ, to the Key Distribution Center (kdc). The KDC is a service running on the domain controller.
+
+Purpose of the AS-REQ: The purpose of the AS-REQ is to prove the identity of the user and request a Ticket Granting Ticket (TGT).
+
+The client does not send the password or even the password hash across the network. The password is used locally on the client PC to generate a secret encryption key. 
+
+**Password-Derived Key Creation**: When the user enters the password during login, the client system generates a cryptographic key created from the password. The process: The client takes the entered password and applies a cryptographic transformation to to create a secret key. This key is not send across the network.
+
+The key is instead used to encrypt a timestamp. The timestamp proves that the authentication request is new and helps protect against replay attacks. This entrypted timestamp is a part of the AS-REQ. The AS-REQ message usually contains:
+- username
+- Domainname
+- Service requested: krbtgt/domain_name. This shows that the client is requesting a Ticket Granting Ticket
+- Timestamp: Encrypted using the password
+- Client information: encryption types used by the client
+
+Important: The AS-REQ does not contain any service tickets at this stage. The client is only requesting a TGT ticket.
+
+**Password validation by the domain controller**: After the domain controller has recieved the AS-REW, it then processes the request through its Key Distribution Center service:
+1. The KDC locates the user account in AD
+2. The KDC retrives the stored password hash associated with the user account
+3. Using the stored password hash, the KDC creates the same key that the client created
+4. The KDC uses this key to decrypt the encrypted timestamp
+
+If the timestamp decrypts successfully, this confirms that the client used the correct password-derived key. This means the user has successfully authenticated. 
+
+**The authentication Service Reply (AS-REP)**
+After successfull authentication, the KDC sends an Authentication Service Reply (AS-REP) back to the client.
+
+This reply/ message contains:
+- Ticket Granting Ticket: This is the primary Kerberos ticket. It proves that the user has successfully authenticated
+- Session Key: Used for secure communication between the client and the KDC
+- Ticket lifetime information: Shows how long the ticket is valid
+- Authorization data: includes information such as group membership of the user and user identity
+
+
 
 ## Verification
 
