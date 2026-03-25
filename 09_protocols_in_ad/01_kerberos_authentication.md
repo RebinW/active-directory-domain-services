@@ -71,7 +71,7 @@ If multiple domain controllers have the same values for both priority and weight
 
 In large organizations, domain controllers must often distributed across multiple sites. AD clients tries to select a domain controller that is located within the same site/ network because it improves performance and reduces network latency. It is in these situations those two values above mentioned would make more sense, than in my small home lab.
 
-**VERIFYING THE PROCESS**
+**VERIFYING THE PROCESS**  
 We are actually able to simulate and test the exact same SRV query the client sends out to discover the available domain controllers in its network, and hopefully we will get back the response that we have two available domain controller in our environment providing LDAP services.
 
 On the client PC I went into command promt and typed the following:
