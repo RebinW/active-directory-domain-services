@@ -100,6 +100,26 @@ This step allows the client to establish network communication with the selected
 
 If SRV record are missing or incorrect, the client will not be able to locate domain controller and the authentication cannot begin.
 
+**VERIFYING THE HOSTNAME RESOLUTION**  
+We can verify the hostname resolution using the same nslookup output shown in step 1. 
+
+The command used in step 1 was used to discover domain controllers, the output also included IP address resolution for each hostname. 
+
+This confirms that after recieving the domain controller hostnames, the client automatically resolves each hostnames into IP addresses:
+
+![Domain controllers proving ldap](screenshots/ldaphosts.png)
+
+The nslookup output shows the following hostname-to-IP:
+dc01.klarstroem.local -> 192.168.56.10
+dc02.klarstroem.local -> 192.168.56.11
+
+These addresses represent the primary communication addresses used by the client to contact the domain controllers.
+
+The output also shows multiple IP addresses for each domain controller. This is because each domain controller has two network adapters in our setup.
+1. Adapter is connected to the internal network "Host-Only adapter" -> 192.168.56.0
+2. Adapter is used for external communication "NAT adapter" -> 10.0.3.0
+
+
 #### Step 3 - Kerberos authentication service request (AS-REQ)
 After the client selected a domain controller and resolved its hostname to an IP address, the client is ready to authenticate using the Kerberos protocol.
 
