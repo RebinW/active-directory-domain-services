@@ -71,6 +71,24 @@ If multiple domain controllers have the same values for both priority and weight
 
 In large organizations, domain controllers must often distributed across multiple sites. AD clients tries to select a domain controller that is located within the same site/ network because it improves performance and reduces network latency. It is in these situations those two values above mentioned would make more sense, than in my small home lab.
 
+**VERIFYING THE PROCESS**
+We are actually able to simulate and test the exact same SRV query the client sends out to discover the available domain controllers in its network, and hopefully we will get back the response that we have two available domain controller in our environment providing LDAP services.
+
+On the client PC I went into command promt and typed the following:
+1. nslookup: we want to lookup name servers proving the service
+2. set type=SRV: we specify the type of records we are requesting
+3. _ldap._tcp.dc._msdcs.klarstroem.local: We type in the exact same query that the client PC sends out.
+
+![Verify discovery of DCs](screenshots/verifydiscovery.png)
+
+We clearly see that the DNS server responds with the two availeble domain controllers:
+- dc01.klarstroem.local
+- dc02.klarstroem.local
+
+This is exactly as expected and the response basically comes from the SRV records we located earlier:
+
+![Domain controllers proving ldap](screenshots/ldaphosts.png)
+
 #### Step 2 - Resolving domain controller hostnames to IP addresses
 After the client recieved the hostnames from the SRV query, the client must resolve the selected hostname into an IP address before communication can begin.
 
@@ -121,9 +139,8 @@ This reply/ message contains:
 - Ticket lifetime information: Shows how long the ticket is valid
 - Authorization data: includes information such as group membership of the user and user identity
 
-
-
 ## Verification
+
 
 ## Results
 
