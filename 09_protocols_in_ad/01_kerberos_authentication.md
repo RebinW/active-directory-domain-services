@@ -75,17 +75,15 @@ In large organizations, domain controllers must often distributed across multipl
 We are actually able to simulate and test the exact same SRV query the client sends out to discover the available domain controllers in its network, and hopefully we will get back the response that we have two available domain controller in our environment providing LDAP services.
 
 On the client PC I went into command promt and typed the following:
-1. nslookup: we want to lookup name servers proving the service
-2. set type=SRV: we specify the type of records we are requesting
-3. _ldap._tcp.dc._msdcs.klarstroem.local: We type in the exact same query that the client PC sends out.
+1. nslookup: used to query DNS records manually
+2. set type=SRV: Specifies that we are requesting Service Location Records
+3. _ldap._tcp.dc._msdcs.klarstroem.local: this matches the exact query used by the domain-joined clients to locate domain controllers provind LDAP services-
 
 ![Verify discovery of DCs](screenshots/verifydiscovery.png)
 
-We clearly see that the DNS server responds with the two availeble domain controllers:
-- dc01.klarstroem.local
-- dc02.klarstroem.local
+The DNS server returned two SRV records, one for each domain controller. Each specifies the hostname of a domain controller that provides LDAP services on port 389.
 
-This is exactly as expected and the response basically comes from the SRV records we located earlier:
+This confirms that domain controller discovery through DNS is working. The returned hostnames matches directly to the SRV records located earlier in the _msdcs zone under dc -> _tcp.
 
 ![Domain controllers proving ldap](screenshots/ldaphosts.png)
 
