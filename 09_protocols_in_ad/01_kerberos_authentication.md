@@ -157,6 +157,33 @@ This reply/ message contains:
 - Ticket lifetime information: Shows how long the ticket is valid
 - Authorization data: includes information such as group membership of the user and user identity
 
+**VERIFYING KERBEROS AUTHENTICATION**  
+After completing step 2, the client system was logged in using the domain user: mark.nielsen. Right after logging in, I used the following command on CLIENT01: **klist**, this command shows all Kerberos tickets currently stored in memory on the client:
+
+![klist command](screenshots/klist.png)
+
+This output shows multiple tickets, but we pay attention specifically to **Server: krbtgt/KLARSTROEM.LOCAL**, this is the Ticket Granting Ticket. This ticket confirms that the client successfully authenticated with the domain controller using Kerberos and recieved the TGT that it then stored on the client PC.
+
+This Ticket Granting Ticket is issued only after successfull authentication and is required for requesting additional services explained earlier.
+
+This proves Kerberos authentication from the client perspective, but we can also confirm the process on the domain controller.
+
+on DC01: I went into Event viewer and Security logs and filtered using event ID: 4768. The event ID 4768 represents a successfull Kerberos Authentication Service exchange. 
+
+The event details shows:
+Account Name: mark.nielsen
+Service Name: krbtgt
+Client address: 192.168.56.20
+
+![Event Viewer](screenshots/eventviewer.png)
+
+This confirms that:
+- The client sent an Authentication Service Request (AS-REQ)
+- The domain controller validated the user credentials
+- The domain controller issued an Authentication Servicee Reply (AS-REP)
+- A Ticket Granting Ticket was generated and given to the client
+
+
 ## Verification
 
 
