@@ -183,12 +183,24 @@ This confirms that:
 - The domain controller issued an Authentication Servicee Reply (AS-REP)
 - A Ticket Granting Ticket was generated and given to the client
 
+The klist output shows multiple tickets after login, these tickets are for services such as:
+- LDAP: Used to communicate with AD
+- CIFS: Used to access shared folder such as SYSVOL
+- HOST: Used for internal communication
+
+This explains why multiple tickets are present even before we manually access any network resources.
+
+I tried after login to access a shared folder in the available for the Trading department, and we can see that an additional service ticket has been issued compared to the first klist output:
+
+![accessing additional resources](screenshots/klist2.png)
 
 ## Verification
-
+I performed the verification part under each implementation step. I chose this because I wanted to connect explanations with real output and observations, making it easier to follow the authentication process from start to finish.
 
 ## Results
+The Kerberos authentication process was successfully validated in the domain environment. The client system was able to locate domain controllers using DNS SRV records, resolve their hostnames to IP addresses, and authenticate using Kerberos.
 
 ## Lessons Learned
+This lab helped me understand how much Kerberos depends on DNS and name resolution. Before working through this process step by step, authentication felt like something that happened in the background, but now I can see how each part connects.
 
-## Next steps
+One of the biggest lessons was understanding how the client first discoveres domain controllers using SRV records and then resolve their hostnames before authentication begins. Overall this lab gave me much deeper understanding of how authentication actually works inside an AD environment.
