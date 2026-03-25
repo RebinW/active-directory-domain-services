@@ -107,7 +107,7 @@ The command used in step 1 was used to discover domain controllers, the output a
 
 This confirms that after recieving the domain controller hostnames, the client automatically resolves each hostnames into IP addresses:
 
-![Domain controllers proving ldap](screenshots/ldaphosts.png)
+![Verify discovery of DCs](screenshots/verifydiscovery.png)
 
 The nslookup output shows the following hostname-to-IP:
 dc01.klarstroem.local -> 192.168.56.10
