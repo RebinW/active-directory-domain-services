@@ -4,7 +4,14 @@
 In this lab, I'm going to install and prepare a dedicated Windows Server to be the synchronization server between the on-premise Active Dirctory environment and Microsoft Entra ID.
 
 ## Objectives
-
+- Deploy a dedicated Windows Server to be the synchronization server between on-premise Active Directory and Entra ID.
+- Install Microsoft Entra Connect Synch
+- Configure synchronization between the on-premise Active Directory and the Entra ID Tenant
+- Validate that objects created in Active Directory are synchronized to Entra ID
+- Verify that password changes performed on-premise are successfully synchronized to Entra ID
+- Confirm that synchronized users can authenticate to Microsoft cloud services using on.prem credentials
+- Document key configuration decisions, including domain filtering, OU selection, and synchronization settings.
+- Troubleshoot sync and permission issues
 
 ## Environment
 Domain: klarstroem.local  
