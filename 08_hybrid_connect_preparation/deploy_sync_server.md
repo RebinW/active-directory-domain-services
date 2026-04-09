@@ -81,6 +81,16 @@ When users access cloud resources, authentication is handled by Entra ID instead
 
 Understanding how these protocols, methods and tokens work is important to me, but this lab focuses only on configuring the sync setup. The detailed authentication flow, including access tokens, and ID token, will have their own dedicated labs.
 
+**Step 5 - Connecting to Entra ID**  
+After selecting the sign-in method, the installer wanted me to connect the syncronization server to Entra ID. I signed in using my global Administrator account for the Microsoft Entra tenant. 
+
+![Connecting to Entra ID](screenshots/connectingentra.png)
+
+This step was required to link the synchronization server to my Entra ID tenant and allow it to create the configuration in Entra ID.
+
+**Step 6 - Connecting to on-premise Active Directory**  
+
+
 ## Verification
 
 ## Results
