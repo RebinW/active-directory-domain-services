@@ -105,6 +105,19 @@ Once the credentials were verified, the installer connected to the Active Direct
 
 ![Directory successfully added](screenshots/directoryadded.png)
 
+**Step 7 - Configure Microsoft Entra sign-in configuration**  
+After I had connected both Entra ID and the on-premise Active Directory, the installer moved to the stage where the user sign-in configuration was reviewed.
+
+The installer displayed the UPN suffixes detected in the on-premises environment. In my case, two suffixes were listed. The first one was the default .local domain from Active Directory, and the second one was the KlarStroem.onmicrosoft.com suffix that exists in Entra ID.
+
+Both domain were shown with the status of *Not added*. The .local domain showed this status because it is not a routable domain and can therefore not be virified in Entra ID. This is expected in a lab environment where a .local domain is used internally. If i actually owned the domain and had used .com in stead, it then would be possible to verify the domain in Entra.
+
+The KlarStroem.onmicrosoft.com domain also showed *Not added*, but this did not prevent the configuration from continuimg. I had already ensured that all users in AD were using the KlarStroem.onmicrosoft.com UPN suffix instead of the .local suffix. This allignment had been completed earlier using PowerShell and was documented in the previous lab.
+
+In the same window, I selected userPrincipalName as the attribute to use as the Entra username. This ensures that the username used in Active Directory match the usernames used in Entra ID. 
+
+![Sign-in configuration](screenshots/signinconfig.png)
+
 ## Verification
 
 ## Results
