@@ -89,7 +89,21 @@ After selecting the sign-in method, the installer wanted me to connect the syncr
 This step was required to link the synchronization server to my Entra ID tenant and allow it to create the configuration in Entra ID.
 
 **Step 6 - Connecting to on-premise Active Directory**  
+After connecting the sync server to Entra ID, the next step was to connect the on-premise Active Directory environment.
 
+![No directory found](screenshots/nodirectory.png)
+
+At this stage, the installer showed that no directories were currently configured. To add the on-premise environment, I selected *Add Directory* and specified the AD forest.
+
+I then entered the credentials for the admin account with Enterprise Administrator permissions in the domain. After providing the credentials, I selected the option to create new AD account. This allows the installer to automatically create the required synchoronization account in Active Directory.
+
+During this process, the installer created the MSOL acoount in the domain. This account is used by the synchronization service to read directory objects such as users, groups, and attributes from AD and sync them to Microsoft Entra ID:
+
+![Creating the MSOL account](screenshots/createmsol.png)
+
+Once the credentials were verified, the installer connected to the Active Directory forest. The configured directory was then listed in the configuration window, confirming that the on-premisxe environment had been linked to the sync server:
+
+![Directory successfully added](screenshots/directoryadded.png)
 
 ## Verification
 
