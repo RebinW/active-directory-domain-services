@@ -43,6 +43,31 @@ I chose connect sync instead of Cloud Sync because I wanted my lab to reflect a 
 
 Additionally, I used this resource to better understand the differences between the two main options and their capabilities: [Connect sync VS Cloud Sync](https://learn.microsoft.com/en-us/entra/identity/hybrid/common-scenarios)
 
+**Step 2 - Running the installer and selecting custom configuration**
+After downloading the installer, I ran Microsoft Entra Connect Sync setup on the SYNC01 server using admin privleges. The installer started by presenting two configuration options: *Express option* and *Customize Option*
+
+![Choosing deployment](screenshots/selectconfigoption.png)
+
+Even though Express in my case would work because of a simple environment with a single forest, I chose the *Customize* optin. This allowed me to manually review and configure each step/ stage of the installation instead of relying on default settings.
+
+Choosing Customize gave me a better understanding and visibility into the configuration process and allowed me to control important settings such as sign in method, directory connection, filering options, and optional features. This lab focuses on understanding synchronization and not just deploy it, then custom configuration option made more sense to me.
+
+**Step 3 - Install required components**
+After selecting the custom configuration option, the installer moved to *Required Components* section. The installer checked the server and confirmed that no existing synchronization service is installed.
+
+Since this was the first time deploying Entra connect Sync in the environment, none of the advanced installation options were selected.
+
+![Required components options](screenshots/requiredcomponents.png)
+
+Still I think it's important to understand these options:
+- Sepcify a Custom installation location: The default installation path was used because there was no requirement to change the location.
+- Use an existing SQL Server: This option was not required because the installer automatically deploys a local SQL Server Express instance. Thi sdatabase is used to store synchronized identity data, track changes, and maintain synchoronization state between Active Directory and Entra ID.
+- Use an existing Service Account: This was not selected because no sync acoount existed yet. The installer later created the required Active Directory account automatically, which is used to read directory objects.
+- Specify custom sync groups: This option was not required in this lab because default permissions are sufficient.
+- Import sync settings: This optiopn is used when rebuilding or migrating an existing sync server. Since this was my first deployment, there were no previous settings to import.
+
+**Step 4 - Select the user sign-in method**
+
 ## Verification
 
 ## Results
