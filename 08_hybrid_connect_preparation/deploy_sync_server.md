@@ -116,6 +116,8 @@ The KlarStroem.onmicrosoft.com domain also showed *Not added*, but this did not 
 
 In the same window, I selected userPrincipalName as the attribute to use as the Entra username. This ensures that the username used in Active Directory match the usernames used in Entra ID. 
 
+![Sign-in configuration](screenshots/signinconfig.png)
+
 **Step 8 - Configure domain and OU filtering**  
 After I had reviewed the Entra sign-in configuration, the installer mooved to the Domain and OU filtering step. I stage controls which objects from Active Directory are going to be synchronized and going to be a part of the sync proccess continuing forward.
 
@@ -132,7 +134,7 @@ Choosing selected OUs instead of synchronizing everything also reflects how many
 
 ![OU Filtering](screenshots/oufiltering.png)
 
-![Sign-in configuration](screenshots/signinconfig.png)
+
 
 ## Verification
 
