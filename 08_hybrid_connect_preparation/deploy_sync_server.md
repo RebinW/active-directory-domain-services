@@ -29,7 +29,13 @@ Network model:
 
 ## Implementation
 **Preparation**
-Before installing Microsoft Entra Connect, 
+Before installing Microsoft Entra Connect, I installed and configured a decdicated Windows Server 2022 called SYNC01. The server was configured using the same baseline configuration used in previous server deployments in this project "DC01, DC02"
+
+I domain-joined the server to the klarstroem.local Active Directory domain and placed it in the Servers/ Infracstructure OU. Network connectivity was verified and tested to ensure connection between servers and with external internet resources.
+
+DNS settings were configured to point to the domain controllers, and time sync was confirmed to prevent authentication and sync issues.
+
+Step 1 - 
 
 ## Verification
 
