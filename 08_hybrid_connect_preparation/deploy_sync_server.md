@@ -116,6 +116,22 @@ The KlarStroem.onmicrosoft.com domain also showed *Not added*, but this did not 
 
 In the same window, I selected userPrincipalName as the attribute to use as the Entra username. This ensures that the username used in Active Directory match the usernames used in Entra ID. 
 
+**Step 8 - Configure domain and OU filtering**  
+After I had reviewed the Entra sign-in configuration, the installer mooved to the Domain and OU filtering step. I stage controls which objects from Active Directory are going to be synchronized and going to be a part of the sync proccess continuing forward.
+
+Instead of selecting *Synchronize all domains and OUs*, I chose the option *Synchronize selected domains and OUs*. I made this decision to have better control over which objects would be synchronized to Entra ID.
+
+From the list available OUs, I selected the top-level OUs that are used in my environment. These included:
+- Users
+- Groups
+- Workstations
+
+By selecting these top-level OUs, all child OUs within them were automatically included in the sync scope. This ensured that relevant user acoounts, security groups, and computer objects would be synchronized without including unnecessary objects from other parts of the directory.
+
+Choosing selected OUs instead of synchronizing everything also reflects how many real environments are configured. It helps reduce unnecessary sync traffic and keeps the cloud directory cleaner by only including objects that are actually needed.
+
+![OU Filtering](screenshots/oufiltering.png)
+
 ![Sign-in configuration](screenshots/signinconfig.png)
 
 ## Verification
