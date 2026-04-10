@@ -187,7 +187,33 @@ The additional recommendations were displayed, including enabling the AD Recycle
 
 After confirming that the configuration completed successfully, I exited the installer and proceeded to verify that the synchronization process was working.
 
-## Verification
+## Verification 
+**Test 1 - Initial sync verification**  
+After completing the Entra Connect Sync installation, the initial sync started automatically in the background. The first test is to confirm that the selected OUs were successfully synchronized to Entra ID.
+
+To verify this, I signed in to Entra admin center and navigated to the Users section. I reviewed the list of users and confirmed that the user accounts from the selected on-premise OUs were synchronized to Entra ID:  
+![Users](screenshots/usersync.png)
+
+The synchronized users showed On-premise sync enebled set to Yes, which confirmed that the accounts were linked to the on-premise Active Directory environment. The usernames also matched the UPN suffix that had been configured earlier during the UPN alignment step.
+
+I then navigated to the Groups section in Entra ID and verified that the security groups located in the selected OUs were also present. These groups showed Windows Server AD as the source, confirming that they came from the on-premise directory:
+![Groups](screenshots/groupsync.png)
+
+**Test 2 - Create test user and verify synchronization**  
+After confirming that the initial synchronization completed successfully, the next step was to verify that new changes in AD would be synchronized correctly to Entra ID.
+
+To test this, I created a new test user in AD. The user was created inside one of the previously selected OUs under the Users OU. During the creation process, I assigned the UPN using the cloud-aligned suffix that had been configured earliers:  
+![Creating new test user](screenshots/testuser.png)
+
+After I had created the test user, I moved to the synchronization server and manually triggered the sync using PowerShell. I ran the following command:  
+*Start-ADSyncSyncCycle -PolicyType Delta*  
+
+This command forces a delta sync, which synchronizes only changes made since last sync cycle. The command returned a success result:  
+![Forcing sync](screenshots/forcingsync.png)
+
+After I waited about 1 minute, I signed in to the Entra Admin Center and confirmed that the new test user had synchronized successfully to Entra ID:  
+![Test user has been synchronized](screenshots/testusersync.png)
+
 
 ## Results
 
