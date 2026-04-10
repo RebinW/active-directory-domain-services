@@ -228,9 +228,8 @@ After waiting a couple of minutes, I then navigated to portal.office.com and tri
 **Test 4 - Password reset from cloud -> Writeback to AD**  
 I tried to reset the test user's password from the Microsoft Entra admin center to verify password writeback to AD. The reset failed, as password writeback requires Entra ID P1 licensing. This test will be revisited later when I Active my Entra ID P2 Trail license.
 
-
-
-
 ## Results
+The synchronization server was successfully deployed and connected to both Microsoft Entra ID and the on-premise Active Directory environment. Users and groups from the selected OUs were synchronized to Entra ID, and new users created in AD were successfully synchronized after running a delta sync. Password changes made in AD were also reflected in the cloud, confirming that password hash sync was working.
 
 ## Lessons Learned
+This lab improved my understanding of hybrid identity synchronization, especially UPN alignment, OU filtering, and manual synchronization using powershell. I also learned that password writeback requires Premium licensing, which prevented full testing at this point.
