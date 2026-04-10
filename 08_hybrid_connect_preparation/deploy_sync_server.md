@@ -148,10 +148,10 @@ The source anchor is a unique value stored on each user object that ensures the 
 Allowing Azure to manage this value simplifies the configuration and ensures that users remain correctly linked between environments, even if usernames or email addresses change later.
 
 I verified that the mS-DS-ConsistencyGuid attribute was present on synchronized users in AD. the corresponding Immutable ID value was also visible in Entra ID, confirming that users were uniquely linked between the on-premise directory and the cloud:
-**Active Directory**
+**Active Directory**  
 ![active directory](screenshots/consistencyguid.png)
 
-**Entra ID**
+**Entra ID**  
 ![entra id](screenshots/immutableid.png)
 
 ## Verification
