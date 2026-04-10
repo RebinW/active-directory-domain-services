@@ -225,7 +225,10 @@ After waiting a couple of minutes, I then navigated to portal.office.com and tri
 
 ![test login](screenshots/testsignin.png)
 
-**Test 4 - Password reset from cloud -> Writeback to AD**
+**Test 4 - Password reset from cloud -> Writeback to AD**  
+I tried to reset the test user's password from the Microsoft Entra admin center to verify password writeback to AD. The reset failed, as password writeback requires Entra ID P1 licensing. This test will be revisited later when I Active my Entra ID P2 Trail license.
+
+
 
 
 ## Results
