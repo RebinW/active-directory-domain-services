@@ -134,7 +134,25 @@ Choosing selected OUs instead of synchronizing everything also reflects how many
 
 ![OU Filtering](screenshots/oufiltering.png)
 
+**Step 9 - Configure user identification and source anchor**  
+After I had configured domain and OU filtering, the installer moved to the stage where users needed to be uniquely identified between the on-premise environment and Entra ID.
 
+![Uniquely identify users](screenshots/identifyusers.png)
+
+At this step, I selected the option *Users are represented only once across all directories*. This option fits environments where users exist in only one directory and are not duplicated across multiple forests. Since my lab environment only has a single Active Directory forest, this option was the correct for me.
+
+In the next section, I selected *Let Azure manage the source anchor*. This setting allows Entra ID to automatically manage the unique identifier used to link users between AD and the cloud.
+
+The source anchor is a unique value stored on each user object that ensures the same user is correctly matched between the on-premise directory and Entra ID. In this setup, Entra ID automatically uses the mS-DS-ConsistencyGuid attribute to create this unique identifier if it does not already exist.
+
+Allowing Azure to manage this value simplifies the configuration and ensures that users remain correctly linked between environments, even if usernames or email addresses change later.
+
+I verified that the mS-DS-ConsistencyGuid attribute was present on synchronized users in AD. the corresponding Immutable ID value was also visible in Entra ID, confirming that users were uniquely linked between the on-premise directory and the cloud:
+**Active Directory**
+![active directory](screenshots/consistencyguid.png)
+
+**Entra ID**
+![entra id](screenshots/immutableid.png)
 
 ## Verification
 
