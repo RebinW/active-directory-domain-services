@@ -214,6 +214,19 @@ This command forces a delta sync, which synchronizes only changes made since las
 After I waited about 1 minute, I signed in to the Entra Admin Center and confirmed that the new test user had synchronized successfully to Entra ID:  
 ![Test user has been synchronized](screenshots/testusersync.png)
 
+**Test 3 - Password reset in Active Directory and verify cloud sign-in**  
+After confirming that the test user was successfully synchronized, the next step was to verify that password changes made in AD were also synchronized to the cloud.
+
+To test thus, I opened AD Users and Computers on the domain controller and selected the previously created test user and reset the password for that user.
+
+After resetting the password, I moved to the synchronization server and manually forced synchronization.
+
+After waiting a couple of minutes, I then navigated to portal.office.com and tried to sign in using the test user account with the newly assigned password. The sign-in completed successfully, but it first required me to set up authenticater because of the default security settings we have applied in Entra ID at this stage.
+
+![test login](screenshots/testsignin.png)
+
+**Test 4 - Password reset from cloud -> Writeback to AD**
+
 
 ## Results
 
