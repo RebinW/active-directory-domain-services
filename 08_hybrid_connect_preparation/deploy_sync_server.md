@@ -154,7 +154,21 @@ I verified that the mS-DS-ConsistencyGuid attribute was present on synchronized 
 **Entra ID, Immutable ID: Base64 value**  
 ![entra id](screenshots/immutableid.png)
 
+**Step 10 - Configure user and device filtering**  
+Ealier I defined which OUs should be synchronized, now the installer moved to the *Filter users and devices stage*. This step gives an additional filtering option based on group membership.
 
+![Additional filtering](screenshots/additionalfiltering.png)
+
+I selected the option to sync all users and devices. Since I had already limited the synchronization scope earlier by selecting specific OUs, there was no need to apply additional filtering using groups.
+
+This option is mainly used for pilot deployments where a small number of users are synchronized for testing.
+
+In my case, the environment was already controlled through OU filtering, and I wanted all users, groups, and devices within those selected OUs to be synchronized. Therefore, selecting *Sync all users and devices* ensured that all relevant objects within the selected OUs would be included in the sync process.
+
+**Step 11 - Selecting optional features**  
+
+
+![Specify additional features](screenshots/optionalfeatures.png)
 
 ## Verification
 
