@@ -166,7 +166,11 @@ This option is mainly used for pilot deployments where a small number of users a
 In my case, the environment was already controlled through OU filtering, and I wanted all users, groups, and devices within those selected OUs to be synchronized. Therefore, selecting *Sync all users and devices* ensured that all relevant objects within the selected OUs would be included in the sync process.
 
 **Step 11 - Selecting optional features**  
+The installer moved to the final stage the *Optional features* stage. This step allows additonal hybrid features to be selected and enabled depending on the requirements of the environment.
 
+Here, I selected *Password writeback* and left the remaining options unselected.
+
+Password writeback ensures password changes made in Entra ID to be written back to the on-premise Active Directory. This means that if a user changes their password in the cloud, the same password will also be updated in the local directory. This ensures that users maintain a single password across both environments and supports self-service password reset as well.
 
 ![Specify additional features](screenshots/optionalfeatures.png)
 
