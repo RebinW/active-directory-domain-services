@@ -174,6 +174,19 @@ Password writeback ensures password changes made in Entra ID to be written back 
 
 ![Specify additional features](screenshots/optionalfeatures.png)
 
+**Step 12 - Complete configuration and start synchronization**  
+After I had selected the optional features, the installer completed the final configuration and showed a confirmation screen showing that the setup had finished successfully.
+
+![Configuration complete](screenshots/finalscreen.png)
+
+Now the synchronization service was fully configured, and the sync process was automatically started in the background.
+
+The confirmation screen also provided several informational messages. One of the messages confirmed that Microsoft Entra ID was configured to use the mS-DS-ConsistencyGuid attribute as the source anchor. This matched the previous step where Azure was allowed to manage the unique identifier used to link users between the on-premise directory and Entra ID.
+
+The additional recommendations were displayed, including enabling the AD Recycle Bin and configuring Trusted Platform Module support on the server. I noted these down to implement them later in my project.
+
+After confirming that the configuration completed successfully, I exited the installer and proceeded to verify that the synchronization process was working.
+
 ## Verification
 
 ## Results
