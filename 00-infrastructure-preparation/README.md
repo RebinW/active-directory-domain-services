@@ -51,7 +51,7 @@ Normally, in on a domain controller some of the first steps in a network configu
 - Make sure to set the correct subnetmask
 - Configure DNS, on a domain controller the DNS server should be the domain controller itself. 
 
-In VirtualBox when installing a VM, VirtualBox then by default creates adapter 1 enables it and sets it up to run NAT. This basically means that it creates a virtual network and VirtualBox will act ass a virtual routher handling the network address translation, so by default if the VM wants to access the internet is:
+In VirtualBox when installing a VM, VirtualBox then by default creates adapter 1, enables it, and sets it up to run NAT. This basically means that it creates a virtual network and VirtualBox will act ass a virtual routher handling the network address translation, so by default if the VM wants to access the internet is:
 - VM -> VirtualBox "Virtual routher running NAT" -> physical PC -> Physical home routher
 
 I had to stop and think ahead and ask myself if this is going to cause me any problems later because the goal is to domain join clients to the domain controller and later I would also want to ensure that I would be able to configure **hybrid setup using PHS**. 
