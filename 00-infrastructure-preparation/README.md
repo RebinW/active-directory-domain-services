@@ -3,16 +3,16 @@ In this lab, i'm going to go through the setup of installing and configuring the
 
 ## VM design decisions
 
-I'm going to use VirtualBox to run the virtual environment and install my VM "Windowsm Server", these are the following specs:
+I'm going to use VirtualBox to run the virtual environment and install my VM "Windows Server", these are the following specifications:
 - VM Name: **DC01**
 - OS Edition: **Windows Server 2022**
 - Memory: **4096 MB "4 GB"**
 - CPU: **2 CPU'S**
 - Harddisk: **80 GB VDI "VirtualBox Disk Image" Dynamic**
-  - Dynamic: This means the virtual disk consumes storage on the physical host PC as data is writtren. The disk expands automatically up to the configured maximum size "80 GB". In other words, the VM does not reserve all 80 GB on the host PC upfront.
+  - Dynamic: This means the virtual disk consumes storage on the physical host PC as data is writtren. The disk expands automatically up to the configured maximum size "80 GB". In other words, the VM does not reserve all 80 GB on my host PC upfront.
 
 **IMPORTANT**  
-NOTE: My default *Unattended installation is checked*, I disabled the option during VM creation. The unattended setup automatically applies predefined identity and systenm configurations such as user accounts, hostname, and DNS suffix "Domain name". For my project I went with a manual installation to ensure a clean baseline server and full admin control over all configurations. This allows the server identity, networking configuration, and later Active Directory domain setup to be defined as part of the learning and documentation.
+NOTE: My default *Unattended installation is checked*, I disabled the option during VM creation. The unattended setup automatically applies predefined identity and system configurations such as user account, hostname, and DNS suffix "Domain name". For my project I went with a manual installation to ensure a clean baseline server and full admin control over all configurations. This allows the server identity, networking configuration, and later Active Directory domain setup to be defined as part of the learning and documentation.
 
 EXAMPLE OF UNATTENDED INSTALLATION "NOT CHOSEN"  
 ![Unattended](screenshots/unattended.png)
