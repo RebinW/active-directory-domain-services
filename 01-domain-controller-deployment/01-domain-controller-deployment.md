@@ -3,8 +3,20 @@
 ## Overview
 
 ## Objectives
+1. Installing the AD DS Role
+2. Promote the server to become an Domain Controller
 
 ## Environment
+- **Domain:** KlarStroem.local
+- **Network:** 192.168.56.0/24
+- **Servers:**
+  - DC01 - Primary domain controller
+  - DC02 - Additional domain controller  
+- **Technologies:**
+  - VirtualBox
+  - Windows Server 2022
+  - Active Directory Domain Services
+  - DNS server
 
 ## Implementation
 
@@ -52,7 +64,7 @@ This creates:
       Therefore they can deploy a RODC while head office in another country fully handles       the writable domain controllers.
    - **Directory Services Restore Mode:** This is a recovery password for maintenance and disaster recovery.
 
-#### Verification
+## Verification
  **Test 1. promotion to domain controller:**   
 If we sign out or restart the VM we can now see that the primary authentication method has changed, the VM is no longer a member of a WorkGroup but instead the domain klarstroem.local:  
 ![Sign-in](screenshots/signin1.png)  
