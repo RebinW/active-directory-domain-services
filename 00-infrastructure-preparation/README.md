@@ -77,7 +77,7 @@ Now, on the Windows server we'll see the two added adapters appear:
 ![new adapter](screenshots/twoadapters.png)
 
 Adapter 1:  
-For my internal network the network is: 192.168.56.0/24. I therefore disabled on the internal adapter and ensured to configure the network adapter:  
+For my internal network the network is: 192.168.56.0/24. I therefore disabled DHCP on the internal adapter and ensured to configure the adapter:  
 ![new adapter](screenshots/internalconfig.png)
 
 Adapter 2:  
