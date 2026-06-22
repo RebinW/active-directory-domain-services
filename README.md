@@ -27,20 +27,37 @@ Instead of creating multiple domains, I decided to structure the environment usi
 ## What this project covers  
 Some of the topics covered in this project include:
 - Active Directory Domain Services (01-domain-controller-deployment folder)
+  - Domain Controller deployment
+  - Active Directory Replication
 - Windows server setup (00-infrastructure-preparation folder)
-- Networking  (00-infrastructure-preparation & 01-domain-controller-deployment folder)
+  - Server installation
+  - Networking
 - DNS in depth (02-dns-configuration folder)
-- Active Directory Replication (01-domain-controller-deployment folder)
+  - DNS Design
+  - Lookup zones
+  - SRV Records
+  - DNS Forwarders
 - Organizational Units (03-organizational-design folder)
-- User creation (04-identity-managment folder)
-- Security Groups (04-identity-managment folder)
+  - OU Design
+  - Group policies
+  - Domain level group policies
+  - OU level group policies
+- Identity management (04-identity-managment folder)
+  - User creation & attributes
+  - Security Groups
+  - Group membership
 - Device-management (05-device-management folder)
+  - Client setup
+  - Domain-join
 - Access control (06-access-control folder)
-- Microsoft Entra connect Sync (08-hybrid-connect-preparation)
+  - Dedicated drive & file share
+  - Folders & permissions
+  - Delegation
+- Hybrid Identity (08-hybrid-connect-preparation)
+  - Microsoft Entra Connect Sync
   - Password Hash Synchronization
-- Hybrid Identity (08-hybrid-connect-preparation folder)
 - Authentication (09-protocols-in-ad folder)
-
+  - Kerberos in depth
 
 ## Architecture Documentation 
 The repository contrains several diagrams that document the environment:
