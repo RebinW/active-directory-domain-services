@@ -40,7 +40,7 @@ Some of the topics covered in this project include:
 
 ## Architecture Documentation 
 The repository contrains several diagrams that document the environment:
-- Active Directory Infrastructure Architecture
+- Active Directory Infrastructure Architecture  
   Shown Above
 - Active Directory OU Structure
   ![Environment](architecture/oustructure.png)
