@@ -1,4 +1,14 @@
-## Installing the AD DS role.
+# Installing AD DS & Server promotion  
+
+## Overview
+
+## Objectives
+
+## Environment
+
+## Implementation
+
+#### Step 1: Installing the AD DS role
 Installing AD DS role: 
 - Server Manager -> Add roles and features.
   - Installation type: Role-based or feature-based installation.
@@ -10,8 +20,7 @@ Installing AD DS role:
 
 We do not have to check the role **DNS Server** from the menu at this point because during promotion "next step", Windows will automatically install and configure DNS because its required for a domain controller.
 
-## Promote to Domain Controller.
-
+#### Step 2: Promote to Domain Controller
 We've installed AD DS, now we need to promote the server to be a domain controller.
 
 Inside Server Manager a yellow triangle will appear saying; *Configuration required for Active Directory Domain Services at DC01* we then press Promote this server to a domain controller:
@@ -43,14 +52,13 @@ This creates:
       Therefore they can deploy a RODC while head office in another country fully handles       the writable domain controllers.
    - **Directory Services Restore Mode:** This is a recovery password for maintenance and disaster recovery.
 
-## Test promotion and configuration
- 
-**1.Test promotion to domain controller:**   
+#### Verification
+ **Test 1. promotion to domain controller:**   
 If we sign out or restart the VM we can now see that the primary authentication method has changed, the VM is no longer a member of a WorkGroup but instead the domain klarstroem.local:  
 ![Sign-in](screenshots/signin1.png)  
 ![Sign-in](screenshots/signin2.png)
 
-**2. Test DNS:**  
+**Test 2. DNS:**  
 We simply want to test if the DNS Server role has been installed. I'm going to test both private DNS and Public DNS
 
 Public DNS:  
@@ -61,4 +69,7 @@ Private DNS:
 
 I'm going to dedicate the next module to configure and explain DNS's importance for an domain controller. Here I simply just wanted to test to see if the DNS server role has been installed correctly.
 
+## Results
+
+## Lessons Learned
 
