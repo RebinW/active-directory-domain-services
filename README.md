@@ -17,7 +17,7 @@ The environment uses a single-domain forest
 - Forest: klarstroem.local
 - Domain: klarstroem.local
 
-![Environment](screenshots/activedirectoryoverview.png)
+![Environment](architecture/activedirectoryoverview.png)
 
 ## Why a single-domain design?  
 I chose a single-domain design because it keeps the environment simpler and easier to manage.
