@@ -5,7 +5,8 @@ In an previous lab, I prepared the Windows server for this AD DS installation. T
 
 ## Objectives
 1. Installing the AD DS Role
-2. Promote the server to become an Domain Controller
+2. Ensure DNS server is installed aswell
+3. Promote the server to become an Domain Controller
 
 ## Environment
 - **Domain:** KlarStroem.local
