@@ -81,7 +81,7 @@ For my internal network the network is: 192.168.56.0/24. I therefore disabled DH
 ![new adapter](screenshots/internalconfig.png)
 
 Adapter 2:  
-The second adapter (NAT-Adapter), we're going to enable DHCP on. The way Virtualbox works is that the IP the host will always get the private IP traslated "using NAT" TO 10.0.3.15. The default gateway will be VirtualBox itself and assign an IP of 10.0.3.2, DNS is going to become my own home routher 192.168.0.1.
+The second adapter (NAT-Adapter), we're going to enable DHCP. The way Virtualbox works is that the host will always get the private IP traslated "using NAT" to 10.0.3.15. The default gateway will be VirtualBox itself and assign an IP of 10.0.3.2, DNS is going to become my own home routher 192.168.0.1.
 ![new adapter](screenshots/internetconfig.png)
 
 
