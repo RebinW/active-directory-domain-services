@@ -1,13 +1,13 @@
 # Installing AD DS & Server promotion  
 
 ## Overview
-In an previous lab, I prepared the Windows server for this AD DS installation. The preparation included installation of the server and configuring the network settings. I therefore will skip these preparation steps in this lap and go straight to installing the AD DS role on the server, and after promote the server to be the primary domain controller in our environment.
+In a previous lab, I prepared the Windows server for this AD DS installation. The preparation included installation of the server and configuring the network settings. I will therefore skip these preparation steps in this lap and go straight to installing the AD DS role on the server, and after promoting the server to be the primary domain controller in our environment.
 
 ## Objectives
 1. Installing the AD DS Role
-2. Ensure DNS role is installed aswell
+2. Ensure the DNS role is installed
 3. Creating new forest and thereby new domain name
-4. Promote the server to become an Domain Controller
+4. Promote the server to become a Domain Controller
 
 ## Environment
 - **Domain:** KlarStroem.local
@@ -43,7 +43,7 @@ Inside Server Manager a yellow triangle will appear saying; *Configuration requi
 Inside the configuration wizzard there are mainly two very important sections we should be aware of.  
 
 **1. The Deployment Configuration:**
-   - Here the important part is to select the correct deployment operation. We haven't created a forrest priviously and therefore do not have a domain yet, so we chose **add a new forrest** and name our root domain: klarstroem.local:
+   - Here the important part is to select the correct deployment operation. We have not previously created a forrest and therefore do not have a domain yet, so we chose **add a new forrest** and name our root domain: klarstroem.local:
 ![Creating new forest](screenshots/deploymentconfiguration.png)
 
 This creates:
@@ -57,7 +57,7 @@ This creates:
 
    - **Functional level:** The minimum Windows Server version allowed for domain controller in this forest, meaning all domain controllers must run Windows Server 2016 or newer.
    - **DNS Server:** It is automatically selected because Active Directory requires DNS
-   - **Global Catalog:** Allows efficient authentication and forest-wide object searches. It stores nessesary information from other domains and a full copy of its own domain.
+   - **Global Catalog:** Allows efficient authentication and forest-wide object searches. It stores nescesary information from other domains and a full copy of its own domain.
    - **Read-Only Domain Controller:** Used in branch offices where security is limited. The branch office wants:
      - Faster logins locally
      - Reduced WAN traffic
@@ -84,7 +84,7 @@ Private DNS:
 I'm going to dedicate another module to configure and explain DNS importance for an domain controller. Here I simply just wanted to test to see if the DNS server role has been installed correctly.
 
 ## Results
-DC01 was successfully added as the primary domain controller in the klarstroem.local domain. We now have a fully functional domain controller whitch serves as the on-premise IdentityProvider for our internal network. 
+DC01 was successfully added as the primary domain controller in the klarstroem.local domain. We now have a fully functional domain controller which serves as the on-premise IdentityProvider for our internal network. 
 
 We also tested that the Domain Controller now is a part of the klarstroem.local domain instead of being a part of a WORKGROUP. DNS also works as intended meaning that the DNS server role has been successfully installed, and that the server is able to resolve and query both internal and external resources.
 
