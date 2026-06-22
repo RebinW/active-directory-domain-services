@@ -73,11 +73,21 @@ Adapter 1:
 Adapter 2:  
 ![new adapter](screenshots/adapter2.png)
 
-Finally, I'll open command promt and type ipconfig just show and verify my IP settings:  
-![IP-Settings](screenshots/ipsettings.png)
+Now, on the Windows server we'll see the two added adapters appear:  
+![new adapter](screenshots/twoadapters.png)
 
-**Internal traffic -> 192.168.56.10**  
-**Internet traffic -> 10.0.3.2**  
+Adapter 1:  
+For my internal network the network is: 192.168.56.0/24. I therefore disabled on the internal adapter and ensured to configure the network adapter:  
+![new adapter](screenshots/internalconfig.png)
+
+Adapter 2:  
+The second adapter (NAT-Adapter), we're going to enable DHCP on. The way Virtualbox works is that the IP the host will always get the private IP traslated "using NAT" TO 10.0.3.15. The default gateway will be VirtualBox itself and assign an IP of 10.0.3.2, DNS is going to become my own home routher 192.168.0.1.
+![new adapter](screenshots/internetadapter.png)
+
+
+Finally, I'll open command promt and type ipconfig just show and verify my IP settings:  
+![IP-Settings](screenshots/ipconfigall.png)
+
 
 Just to conclude: In this setup, VirtualBox acts as the router for internet traffic. The NAT adapter provides a virtual default gateway, which allows the virtual machines to reach the internet. The Host-Only adapter is used as the internal network where all Active Directory and DNS communication takes place.
 
