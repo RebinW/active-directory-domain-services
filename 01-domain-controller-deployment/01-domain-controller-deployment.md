@@ -1,6 +1,7 @@
 # Installing AD DS & Server promotion  
 
 ## Overview
+In an previous lab, I prepared the Windows server for this AD DS installation. The preparation included installation of the server and configuring the network settings. I therefore will skip these preparation steps in this lap and go straight to installing the AD DS role on the server, and after promote the server to be the primary domain controller in our environment.
 
 ## Objectives
 1. Installing the AD DS Role
