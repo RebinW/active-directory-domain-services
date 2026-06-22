@@ -7,7 +7,7 @@ In this lab we will look at how replication works between domain controllers in 
 1. Verify replication between domain controllers.
 2. Check replication health using repadmin tools.
 3. Understand how to read replication command output.
-4. Identify the five Active Directory naming contexts that replicate between domain controllers.
+4. Identify the five Active Directory naming contexts "partitions" that replicates between domain controllers.
 
 ## Environment  
 The environments consists of two domain controllers deployed in the klarstroem.local domain.
@@ -32,10 +32,10 @@ Contains configuration information settings for the entire AD forest. This inclu
 Defines the structure of objects stored in AD. it specifies which object types and attributes are allowed in the directory. The schema is the same across the entire forest and therefore it replicates to all domain controllers.
 
 **DomainDnsZones Partition:**  
-Containes DNS data related to the domain. This includes DNS records used by domain controllers and clients. The partition replicates to domain controllers running DNS services within the same domain. DNS records used inside the same domain.
+Containes DNS data related to the domain. This includes DNS records used by domain controllers and clients. The partition replicates to domain controllers running DNS services within the same domain.
 
 **ForestDnsZones Partition:**  
-Contains DNS information shared across the entire forest. This ensures that DNS records required across the forest are replicated between all DNS servers. DNS records needed anywhere in the forest, example communication between different domains within the forest.
+Contains DNS information shared across the entire forest. This ensures that DNS records required across the forest are replicated between all DNS servers. DNS records needed anywhere in the forest, example: communication between different domains within the forest.
 
 #### Step 1: Replication health overview  
 The command *repadmin /replsummary* gives a summary of replication attempts between domain controllers. It shows the last 5 replication attempts, replication delays, and overall replication health across the environment.
