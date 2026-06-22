@@ -38,6 +38,11 @@ Some of the topics covered in this project include:
 - Authentication
 - Identity and Access Management in general
 
-## Group Strategy  
-The group design is divided into three categories
+## Architecture Documentation 
+The repository contrains several diagrams that document the environment:
+- Active Directory Infrastructure Architecture
+- Active Directory OU Structure
+- Active Directory Group Strategy
+- Hybrid Identity Architecture
+
 
