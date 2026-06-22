@@ -1,8 +1,7 @@
 # Preparation and configuration of the Windows server
-In this lab, i'm going to go through the setup of installing and configuring the domain controller.  
+In this lab, i'm going to go through the setup of installing and configuring the server that will later become the primary domain controller.  
 
-## VM design decisions
-
+## VM design decisions  
 I'm going to use VirtualBox to run the virtual environment and install my VM "Windows Server", these are the following specifications:
 - VM Name: **DC01**
 - OS Edition: **Windows Server 2022**
@@ -20,14 +19,14 @@ EXAMPLE OF UNATTENDED INSTALLATION "NOT CHOSEN"
 User name and password section:
 - VirtualBox creates a local user automatically during Windows installation
 - It does not log us in as the built-in Admin account
-- It creates a seperate local account (vboxuser) and password we enter
+- It creates a seperate local account (vboxuser) and password we choose to enter
 
 OS Installation options section: 
 - Hostname: The name of the server
 - Domain name: This field does not refer to an Active Directory domain. It specifies a temporary DNS suffix automatically applied during automated Wiondows setup. This suffix is used to create a network identity for the VM during installation, forexample DC01.myguest.virtualbox.org. Since this project requires creating an Active Directory domain manually during domain controller promotion, this automatic DNS suffix was avoided to maintain a clean server config before AD DS deployment. 
 
 ## Rename Server
-When we created the VM and named it DC01, we then only named the VM inside of VirtualBox. The name then only belongs to the hypervisor, not to Windows.
+When we created the VM and named it DC01, we then only named the VM inside of VirtualBox. The name then only belongs to the hypervisor, not to Windows OS itself.
 
 VirtualBox VM name:
 - Used only by VirtualBox to identify the VM on my host PC
@@ -46,22 +45,22 @@ To change the hostname of the server:
 ![Change hostname](screenshots/hostname.png)
 
 ## Network configuration
-Normally, in on a domain controller some of the first steps in a network configuration would be to:
+Normally, on a domain controller some of the first steps in a network configuration would be to:
 - Disable DHCP and configure a static IP address for the Server
 - Make sure to set the correct subnetmask
 - Configure DNS, on a domain controller the DNS server should be the domain controller itself. 
 
-In VirtualBox when installing a VM, VirtualBox then by default creates adapter 1, enables it, and sets it up to run NAT. This basically means that it creates a virtual network and VirtualBox will act ass a virtual routher handling the network address translation, so by default if the VM wants to access the internet is:
+In VirtualBox when installing a VM, VirtualBox then by default creates adapter 1, enables it, and sets it up to run NAT. This basically means that it creates a virtual network and VirtualBox will act ass a virtual routher handling the network address translation, so by default if the VM wants to access the internet:
 - VM -> VirtualBox "Virtual routher running NAT" -> physical PC -> Physical home routher
 
-I had to stop and think ahead and ask myself if this is going to cause me any problems later because the goal is to domain join clients to the domain controller and later I would also want to ensure that I would be able to configure **hybrid setup using PHS**. 
+I had to stop and think ahead and ask myself if this is going to cause me problems later because the goal is to domain join clients to the domain controller and later I would also want to ensure that I would be able to configure **hybrid setup using PHS**. 
 
 Why is NAT-only going to be a problem?
 - VirtualBox creates a small routher per VM group
 - Some broadcast and service discovery behaviours are limited
 - It does not perfectly simulate a real network since every VM will hide behind a virtual router and have its own LAN
 
- NAT only setup is not reliable for a realistic AD lab with the requirements that I have, also AD depends on real LAN behaviour.
+ NAT only setup is not reliable for a realistic AD lab with the requirements that I have for this project, also AD depends on real LAN behaviour.
 
 To solve this problem and future proof my lab I had to install an additional adapter "Host-only adapter" on the domain controller, this means the VM will have to adapters enabled:
 - Host-Only adapter = internal company LAN
@@ -77,7 +76,7 @@ Adapter 2:
 Finally, I'll open command promt and type ipconfig just show and verify my IP settings:  
 ![IP-Settings](screenshots/ipsettings.png)
 
-**Internal traffic -> 192.168.56.X**  
+**Internal traffic -> 192.168.56.10**  
 **Internet traffic -> 10.0.3.2**  
 
 Just to conclude: In this setup, VirtualBox acts as the router for internet traffic. The NAT adapter provides a virtual default gateway, which allows the virtual machines to reach the internet. The Host-Only adapter is used as the internal network where all Active Directory and DNS communication takes place.
