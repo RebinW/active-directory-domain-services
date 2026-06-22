@@ -6,7 +6,8 @@ In an previous lab, I prepared the Windows server for this AD DS installation. T
 ## Objectives
 1. Installing the AD DS Role
 2. Ensure DNS role is installed aswell
-3. Promote the server to become an Domain Controller
+3. Creating new forest and thereby new domain name
+4. Promote the server to become an Domain Controller
 
 ## Environment
 - **Domain:** KlarStroem.local
@@ -80,7 +81,7 @@ Public DNS:
 Private DNS:  
 ![Private DNS](screenshots/privatedns.png)
 
-I'm going to dedicate the next module to configure and explain DNS's importance for an domain controller. Here I simply just wanted to test to see if the DNS server role has been installed correctly.
+I'm going to dedicate another module to configure and explain DNS importance for an domain controller. Here I simply just wanted to test to see if the DNS server role has been installed correctly.
 
 ## Results
 
