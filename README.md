@@ -44,7 +44,3 @@ The repository contrains several diagrams that document the environment:
 - Active Directory OU Structure
 - Active Directory Group Strategy
 - Hybrid Identity Architecture
-
-![Environment](architecture/oustructure.png)  
-![Environment](architecture/groupstructure.png)  
-![Environment](architecture/hybridoverview.png)
