@@ -45,9 +45,9 @@ Largest delta = the time since the last successful replication
 Fails/total = shows how many replication has failed out of the last 5 attempts  
 Error code = gives an indication to why the replication failed
 
-In this example above, DC01 shows successful replication attempts with a very small replication delta, this indicates a healthy synchronization with its partner "DC02". DC02 shows two failed replication attempt with error 8524, this indicates DNS lookup failure. 
+In this example above, DC01 shows successful replication attempts with a very small replication delta, this indicates a healthy synchronization with its partner "DC02". DC02 shows two failed replication attempts with error 8524, this indicates DNS lookup failure. 
 
-The command and the picture above shows that two out of time attempts failed and why does two failed. However, the command does not show when the failure occurred or which AD partition failed. This is where step two comes in.
+The command and the picture above shows that two out of five attempts failed and why those two failed. However, the command does not show when the failure occurred or which AD partition failed. This is where step two comes in.
 
 #### Step 2: Inspect detailed replication information  
 The *repadmin /showrepl* command shows detailed replication details for each of the 5 partitions. It shows last successful replication time, the last attempt, and any errors that occurred.
