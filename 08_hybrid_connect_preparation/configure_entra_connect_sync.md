@@ -194,12 +194,12 @@ After confirming that the configuration completed successfully, I exited the ins
 After completing the Entra Connect Sync installation, the initial sync started automatically in the background. The first test is to confirm that the selected OUs were successfully synchronized to Entra ID.
 
 To verify this, I signed in to Entra admin center and navigated to the Users section. I reviewed the list of users and confirmed that the user accounts from the selected on-premise OUs were synchronized to Entra ID:  
-![Users](screenshots/usersync.png)
+![Users](screenshots/users.png)
 
 The synchronized users showed On-premise sync enebled set to Yes, which confirmed that the accounts were linked to the on-premise Active Directory environment. The usernames also matched the UPN suffix that had been configured earlier during the UPN alignment step.
 
 I then navigated to the Groups section in Entra ID and verified that the security groups located in the selected OUs were also present. These groups showed Windows Server AD as the source, confirming that they came from the on-premise directory:
-![Groups](screenshots/groupsync.png)
+![Groups](screenshots/groups.png)
 
 **Test 2 - Create test user and verify synchronization**  
 After confirming that the initial synchronization completed successfully, the next step was to verify that new changes in AD would be synchronized correctly to Entra ID.
