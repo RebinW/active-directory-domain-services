@@ -1,6 +1,6 @@
 # Active Directory Domain Services Lab
 
-##About this project
+## About this project
 This project documents my Active Directory lab environment and the work I have done to learn Active Directory, hybrid identity, and Microsoft Entra ID.
 
 The goal has never been to build the most complex environment possible. Instead, the goal has been to understand how identities are managed in a real organization and how on-premises Active Directory integrates with Microsoft Entra ID.
