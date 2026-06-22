@@ -12,8 +12,7 @@ In an previous lab, I prepared the Windows server for this AD DS installation. T
 - **Domain:** KlarStroem.local
 - **Network:** 192.168.56.0/24
 - **Servers:**
-  - DC01 - Primary domain controller
-  - DC02 - Additional domain controller  
+  - DC01 - Primary domain controller 
 - **Technologies:**
   - VirtualBox
   - Windows Server 2022
