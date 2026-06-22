@@ -124,13 +124,15 @@ After I had reviewed the Entra sign-in configuration, the installer mooved to th
 Instead of selecting *Synchronize all domains and OUs*, I chose the option *Synchronize selected domains and OUs*. I made this decision to have better control over which objects would be synchronized to Entra ID.
 
 From the list available OUs, I selected the top-level OUs that are used in my environment. These included:
-- Users
-- Groups
-- Workstations
+- User objects
+- Group objects
+- Workstation objects
 
 By selecting these top-level OUs, all child OUs within them were automatically included in the sync scope. This ensured that relevant user acoounts, security groups, and computer objects would be synchronized without including unnecessary objects from other parts of the directory.
 
 Choosing selected OUs instead of synchronizing everything also reflects how many real environments are configured. It helps reduce unnecessary sync traffic and keeps the cloud directory cleaner by only including objects that are actually needed.
+
+**NOTE:** The Organizational Unit itself is not going to be synchoronized as a unit/container. What happens is that it is the objects that are within the OU's that is going to be synchoronized. Also later if for some reason uncheck an OU for any reason, this is going to automatically remove the objects from Entra ID that sits in that particular OU. Another important note is that, if a object lives in several OU's with are checked for synchronization, does not mean we will have replicates of the same object in Entra ID.
 
 ![OU Filtering](screenshots/oufiltering.png)
 
