@@ -84,6 +84,9 @@ Private DNS:
 I'm going to dedicate another module to configure and explain DNS importance for an domain controller. Here I simply just wanted to test to see if the DNS server role has been installed correctly.
 
 ## Results
+DC01 was successfully added as the primary domain controller in the klarstroem.local domain. We now have a fully functional domain controller whitch serves as the on-premise IdentityProvider for our internal network. 
+
+We also tested that the Domain Controller now is a part of the klarstroem.local domain instead of being a part of a WORKGROUP. DNS also works as intended meaning that the DNS server role has been successfully installed, and that the server is able to resolve and query both internal and external resources.
 
 ## Lessons Learned
 
