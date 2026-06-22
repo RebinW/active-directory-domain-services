@@ -56,24 +56,25 @@ Using this command makes it possible to determine which partitions failed to rep
 
 ![Detailed rep info](screenshots/failedrep2.png)
 
-The detailed output shows that the failures occurred earlier due to a DNS lookup issue. We also see that the effected partitions are the configuration partition and the schema partition. Show lets concentrate on the configuration partition: 
+The detailed output shows that the failures occurred earlier due to a DNS lookup issue. We also see that the effected partitions are the configuration partition and the schema partition. 
 
+Now lets concentrate on the configuration partition: 
 The output shows that the last successful replication occurred at 15:53, while the most recent replication attempt at 15:59 failed.
 
 This situation can occur when a domain controller is restarted. After start up, the system automatically tries to replicate with the other domain controllers. If supporting services such as DNS are not fully available yet, the replication attempt may fail.
 
-Because of this, the replication commands shown so far only provide information about previous attempts. They do not confirm whether replication is currently working. For that reason, in next step will force replication in real time. This allows us to verify whether replication between the domain controllers works at this moment.
+the replication commands shown so far only provide information about previous attempts. They do not confirm whether replication is currently working. For that reason, in the next step I will force replication in real time. This allows us to verify whether replication between the domain controllers works at this moment.
 
 #### Step 3: Forcing replication
-As mentioned, we're able to test replication in real time and by using the command *repadmin /syncall /AdeP* and thereby force replication. Before executing the command, i'd then like to give a short explanation to the command:
+As mentioned, we're able to test replication in real time by using the command *repadmin /syncall /AdeP* and thereby force replication. Before executing the command, I would then like to give a short explanation of the command:
 
-**syncall:** Tells the domain controller to synchronize to all its replication partners.
+**syncall:** Tells the domain controller to synchronize to all its replication partners "domain controllers in the forest".
 
 Now to the flags: **AdeP:**
 A = means to include all naming contexts (partitions)  
 d = identifies the replication partners by distinguished name in the output. This simply makes the output easier to read  
-e = menas Enterprise - It tells the command to includce all replication partners across sites, not just partners in the same site. We only have one site "network" but in real enterprises they might have several networks/ subnets in different locations.  
-P = means Push - Normally AD replication is pull based, meaning the destination DC quests updates. When we use P, the domain controller pushes the changes to its partners immediately. 
+e = menas Enterprise - It tells the command to includce all replication partners across sites, not just partners in the same site. We only have one site "network" but in real enterprises they might have several networks/subnets in different locations.  
+P = means Push - Normally AD replication is pull based, meaning the destination DC requests updates. When we use P, the domain controller pushes the changes to its partners immediately. 
 
 Lets go ahead and use the command to test if replication works at this exact time:  
 
