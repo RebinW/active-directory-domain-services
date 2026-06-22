@@ -41,9 +41,12 @@ Some of the topics covered in this project include:
 ## Architecture Documentation 
 The repository contrains several diagrams that document the environment:
 - Active Directory Infrastructure Architecture
-  ![Environment](architecture/activedirectoryoverview.png)
+  Shown Above
 - Active Directory OU Structure
+  ![Environment](architecture/oustructure.png)
 - Active Directory Group Strategy
+  ![Environment](architecture/groupstructure.png)
 - Hybrid Identity Architecture
+  ![Environment](architecture/hybridoverview.png)
 
 
