@@ -26,17 +26,21 @@ Instead of creating multiple domains, I decided to structure the environment usi
 
 ## What this project covers  
 Some of the topics covered in this project include:
-- Active Directory Domain Services
-- Windows server setup
-- Networking
-- DNS in depth
-- Active Directory Replication
-- Security Groups
-- Microsoft Entra connect Sync
-- Password Hash Synchronization
-- Hybrid Identity
-- Authentication
-- Identity and Access Management in general
+- Active Directory Domain Services (01-domain-controller-deployment folder)
+- Windows server setup (00-infrastructure-preparation folder)
+- Networking  (00-infrastructure-preparation & 01-domain-controller-deployment folder)
+- DNS in depth (02-dns-configuration folder)
+- Active Directory Replication (01-domain-controller-deployment folder)
+- Organizational Units (03-organizational-design folder)
+- User creation (04-identity-managment folder)
+- Security Groups (04-identity-managment folder)
+- Device-management (05-device-management folder)
+- Access control (06-access-control folder)
+- Microsoft Entra connect Sync (08-hybrid-connect-preparation)
+  - Password Hash Synchronization
+- Hybrid Identity (08-hybrid-connect-preparation folder)
+- Authentication (09-protocols-in-ad folder)
+
 
 ## Architecture Documentation 
 The repository contrains several diagrams that document the environment:
