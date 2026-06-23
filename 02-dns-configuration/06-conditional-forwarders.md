@@ -51,7 +51,7 @@ Stub zones contain the following records:
 - NS record
 - A record (glue records)
 
-Instead of manually defining the DNS server as in conditional forwarders, stub zones automatically learn which DNS server are authoritative for the other domain. This ensures that the DNS server can dynamically learn and maintain correct information of the authoritative DNS infrastructure for that zone.
+Instead of manually defining the DNS server as in conditional forwarders, stub zones automatically learn which DNS server are authoritative for the other domain. This ensures that the DNS server can dynamically learn and maintain correct information of the authoritative DNS infrastructure for that zone. Stub zones are more secure in my opinion because if the resource in the other domain changes adress, the adresses is then automatically updated in the stub zone.
 
 ## Verification
 Because my environment only contains a single domain, conditional forwarders and stub zones were not configured. In a multi-domain environment, verification would involve testing name resolution between domains and sites.
