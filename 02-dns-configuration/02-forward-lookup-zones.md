@@ -16,7 +16,7 @@ Same environment as in the previous lab
 #### What are forward lookup zones  
 These zones hold record types that resolve hostnames to IP addresses. Althrough many different record types exist in these zones common for most of them is that they map hostnames to IP addresses.
 
-At first I had a hard time distinguishing the two forward lookup zones from each other, reason being mainly because SRV records exists in both. I learned that the answer different questions. klarstroem.local answers questions like: 
+At first I had a hard time distinguishing the two forward lookup zones from each other, reason being mainly because SRV records exists in both. I learned that they answer different questions. klarstroem.local answers questions like: 
   - which servers provide LDAP for this domain
   - which servers provide Kerberos authentication
 
