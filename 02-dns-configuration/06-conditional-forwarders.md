@@ -1,6 +1,7 @@
 # Conditional Forwarders and Stub Zones
 
 ## Overview
+Conditional forwarders ensures that a DNS server can forwward queries for a specific domain to a specific DNS server. Instead of performing full recursive resolution, the DNS server forwards the request directly to the DNS server responsible for that domain.
 
 ## Objectives
 - Understand the purpose of conditional forwarders
@@ -23,22 +24,19 @@ DC02:
 This lab only explains the concepts of conditional forwarders and stub zones. The current project/environment contains only one DNS domain, therefore these features are not configured.
 
 ## Implementation
-#### Conditional Forwarders:
-Conditional forwarders ensures that a DNS server can forwward queries for a specific domain to a specific DNS server. Instead of performing full recursive resolution, the DNS server forwards the request directly to the DNS server responsible for that domain.
-
 **Prerequisites** for conditional forwarders. Before configuring a conditional forwarders, the DNS servers of the involved domains must be able to communicate with each other over the network. Conditional forwarders do not create this connectivity, they only instruct the DNS server where to send DNS queries once connectivity already exists. In many real-world organizations, connectivity between seperate internal networks is established using one of the following methods:
 - Site-to-site VPN connection
 - Private WAN or MPLS connections between internal networks
 - Cloud networking connections such as Azure VPN Gateway or ExpressRoute
 
-Example:
+Example:  
 Organization A:
 - Domain: klarstroem.local
 - DNS Server: 192.168.56.10
 
 Organization B:
-Domain: partner.local
-DNS Server: 10.10.10.5
+- Domain: partner.local
+- DNS Server: 10.10.10.5
 
 After a VPN or private network connection is established between the two networks, DNS servers from each environment can communiicate.
 
