@@ -15,10 +15,3 @@
 ## Lessons Learned
 
 ## Next steps
-
-
-- backups
-- updates
-- troubleshooting
-- monitoring
-- common failure scenarios
