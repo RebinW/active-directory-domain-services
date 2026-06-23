@@ -10,8 +10,8 @@ The lab includes selecting the correct operating system, allocating recourses, a
 - Install a supported Windows operating system
 - Allocate correct resources
 - Configure networking to enable communication with domain controllers
-- Prepare the device for formain join
-
+- Prepare the device to be domain-joined
+  
 ## Environment
 The following setup and environment is used:
 - Hypervisor: VirtualBox
@@ -58,14 +58,14 @@ To verify the configuration, the network settings were reviewed using the ipconf
 Connectivity to the domain controller was tested using a ping command with the domain controller's IP address:
 ![Confirm connectivity](screenshots/ping.png)
 
-DNS resolution was also tested using nslookup against the domain name, confirming that the client cloud resolve the domain through the configured DNS server:
+DNS resolution was also tested using nslookup against the domain name, confirming that the client can resolve the domain through the configured DNS server:
 ![nslookuo](screenshots/nslookupklarstroem.png)
 
 I also pinged the domain controller using its fully qualified domain name "FQDN", which also succeeded. This confirms taht DNS resolution and name lookup works correctly:
 ![FQDN](screenshots/fqdn.png)
 
 ## Results
-The client virtual machine is now fully configured and able to communicate with the domain controllers. Network connectivity and DNS resolution are working as expected, and the system is prepared to be domain joined in the next lab.
+The client virtual machine is now fully configured and able to communicate with the domain controllers. Network connectivity and DNS resolution is working as expected, and the client is prepared to be domain joined in the next lab.
 
 ## Lessons Learned
 This step showed how important correct network configuration is in an Active Directory environment. Even if the system is installed correctly, domain join will fail if DNS is not configured right.
