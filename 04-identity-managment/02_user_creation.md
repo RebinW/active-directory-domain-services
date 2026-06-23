@@ -3,6 +3,8 @@
 ## Overview  
 In this lab, user accounts are created and configured. While creating a user is a simple task, the main focus is on properly configuring user attributes. These attributes define the identity of the user and are important for management, access control, and later synchronization to Microsoft Entra ID.
 
+This part is especially important for hybrid environments, because Active Directory will be the source of authority. This means users in a hybrid setup will have to be created in AD rather than directly in Entra ID. If we in a hybrid setup creates users, then those users will only remain cloud identities. These users cannot be synchronized from cloud to on-premise.
+
 The lab builds on the previous step, where groups were created for the Trading department. The users created here will later be added to those groups and used to test access to resources.
 
 ## Objectives  
@@ -12,7 +14,7 @@ The lab builds on the previous step, where groups were created for the Trading d
 
 ## Implementation  
 #### Step 1: User creation.
-Users are created directly in the appropriate Organizational Unit to reflect the structure of the organization: 01_Users -> Aarhus -> Trading
+Users are created directly in the appropriate Organizational Unit to reflect the structure of the organization: 01_Users ->  -> Trading
 
 For each user we have to provide: 
 - First name
