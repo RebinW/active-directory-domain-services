@@ -5,9 +5,9 @@ Group Policy Objects can be applied at different levels in an Active Directory e
 
 Policies that are applied further down this order will take priority over the ones applied earlier. This means that policies applied at an OU level can override settings that exist at the domain level. Because of this, most companies apply the most of their policies at the OU level. This allows admins to target specific users, workstations, or servers without affecting the entire domain.
 
-In real organizations Group Policy is well thought off when enforcing security rules and system configurations. The number of available policies and settings is extremely large and organizations often spend a long time designing and managing them.
+In real organizations Group Policies is is well designed before enforcing security rules and system configurations. The number of available policies and settings is extremely large and organizations often spend a long time designing and managing them.
 
-For this project only a few examples will be configured. The purpose of this lab is not to build a full enterprise policy configuration og setup, but simply to demonstrate how Group Policy Objects are created, configured, and linked to Organizational Units. This lab builds on the OU structure created earlier and demonstrates how policies can be applied to specific parts of the directory structure.
+For this project only a few examples will be configured. The purpose of this lab is not to build a full enterprise policy configuration or setup, but simply to demonstrate how Group Policy Objects are created, configured, and linked to Organizational Units. This lab builds on the OU structure created earlier and demonstrates how policies can be applied to specific parts of the directory structure.
 
 ## Objectives
 - Understand how GPO can be linked to Organizational Units
@@ -15,23 +15,21 @@ For this project only a few examples will be configured. The purpose of this lab
 - Create example policies targeting users and workstations
   
 ## Environment
-Domain: klarstroem.local Network: 192.168.56.0/24
+Domain: klarstroem.local  
+Network: 192.168.56.0/24
 
 DC01:
-
-Windows Server domain controller
-DNS Server role
-DC01:
-
-Windows Server domain controller
-DNS Server role
+- Windows Server domain controller
+- DNS Server role
+  
+DC02:
+- Windows Server domain controller
+- DNS Server role
 
 ## Implementation
 In this lab two simple GPO will be created and applied to the OU structure that was created in the previous lab. The goal is to demonstrate how policies can be configured and linked to OUs so they automatically apply to the objects inside those OUs.
 
 The first policy will target workstation devices and enforce a simple security setting. The second policy will target accounts and modify a small user environment configuration. These examples are intentionally simple and are only meant to show how policies can be applied and managed within the directory.
-
-####
 
 **Step 1: Open Group Policy Management Console.**  
 To begin configuring policies, the Group Policy Management tool must be opened. This management tool allows us to create, modify, and link Group Policy Objects.
@@ -49,7 +47,7 @@ Right click on the *Group Policy Object*
 ![new policy](screenshots/newworkstationpolicy.png)
 
 **Step 3: Configure the workstation policy**
-Once the object has been created "Workstation Security Baseline", the next is to define the settings that the policy will enforce. In this example a simple security configuration will be applied taht automatically locks a workstation after a perioed of inactivity.
+Once the object has been created "Workstation Security Baseline", the next is to define the settings that the policy will enforce. In this example a simple security configuration will be applied that automatically locks a workstation after a perioed of inactivity.
 
 Right click on the new policy and click edit.  
 Navigate to: 
@@ -108,7 +106,7 @@ The final step is to link the policy to the Organizational Unit containing the u
 - Right click the OU and select Link to Existing GPO
 - Choose User Desktop Policy
 
-Now all users inside 01_Users will recieve this policy, and of course the child OUs within 01_Users will inherit the policy.
+Now all users inside 01_Users will recieve this policy, and of course the child OUs within 01_Users will inherit the policy. This means the policy will apply on all users weather they're located in Aarhus, London or Hamburg.
 ![Link user policy](screenshots/linkuserpolicy.png)
 
 ## Verification
@@ -133,3 +131,5 @@ Once again, in real organizations many different policies would normally be impl
 **Note on Hybrid Identity:** The policies configured in this lab apply only to the on-premise environment. When users and devices are later synchronized to Entra ID using Entra Connect, these Group Policy settings are not automatically transferred to the cloud.
 
 On-prem authentication is still handled by the domain controllers, which means these policies will still apply when users sign in to domain-joined computers. Cloud services such as Microsoft 365 use different ways for access control and configuration, such as conditional access and Intune policies.
+
+In other words the GPO will still apply have effect even if we move to a hybrid set-up later. I always keep in mind that our AD environment is the source of authority.
