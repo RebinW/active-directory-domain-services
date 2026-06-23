@@ -9,7 +9,7 @@
 - Compare conditional forwarders and stub zones
   
 ## Environment
-Domain: klarstroem.local
+Domain: klarstroem.local  
 Network: 192.168.56.0/24
 
 DC01:
@@ -20,7 +20,7 @@ DC02:
 - DNS Server role
 
 **NOTE:**
-This lab only explains the concepts of conditional forwarders and stub zones. The current project/ environment contains only one DNS domain, therefore these features are not configured.
+This lab only explains the concepts of conditional forwarders and stub zones. The current project/environment contains only one DNS domain, therefore these features are not configured.
 
 ## Implementation
 #### Conditional Forwarders:
