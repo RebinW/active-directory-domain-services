@@ -3,7 +3,7 @@
 ## Overview
 Organizational Units are containers in Active Directory used to organize objects such as users, computers, groups, and service accounts/applications. Organizational Units provide a structured way to manage objectives within a domain.
 
-OUs have two main administrative functions. They allow admins to apply Group Policies to specific sets of objects and they allow delegation of administrative tasks without giving domain-wide privileges. A common design approch is to organize OUs by object type first and then location or department. This simplifies Group Policy inheritance and administrative delegation. Group policies can be applied on both top-level domain scope "klarstroem.local" or at OU-Level scope.
+OUs have two main administrative functions. They allow admins to apply Group Policies to specific sets of objects and they allow delegation of administrative tasks without giving domain-wide privileges. A common design approch is to organize OUs by object type first and then location or department. This simplifies Group Policy inheritance and administrative delegation. Group policies can be applied on both domain-level scope "klarstroem.local" or at OU-level scope.
 
 In this lab the OU architecture is designed and implemented for the klarstroem domain. The structure reflects how many organizations seperate users, groups, workstations and servers to maintain clear boundaries.
 
