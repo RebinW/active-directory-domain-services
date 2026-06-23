@@ -25,7 +25,7 @@ For each user we have to provide:
 I'll start out with creating my first user, Mark Nielsen:
 ![Mark user](screenshots/mark.png)
 
-Next, I chose *User must change password at next logon*, this is a common approch in real organizations. I would then hand the user the temporary password, and then the user had to change the password when trying to logon for the first time. This ensures that no one other than the user knows the password to that account:
+Next, I chose *User must change password at next logon*, this is a common approch in real organizations. I would have to hand the user the temporary password, and then the user has to change the password when trying to logon for the first time. This ensures that no one other than the user knows the password to the account:
 
 ![new password](screenshots/password.png)
 
@@ -63,7 +63,7 @@ To configure the above mentioned attributes, I simply right clicked on the user 
 ![configuring attributes](screenshots/attributes.png)
 
 ## Verification
-To verify that I have successfully created the users and added the required additional attribute we could ruun the following PowerShell script:
+To verify that I have successfully created the users and added the required additional attribute we could run the following PowerShell script:
 - Get-ADUser -Identity mark.nielsen -Properties * | Format-List
   - -Properties: shows all attributes
   - Format List: prints everything in readable format
