@@ -1,4 +1,4 @@
-# DNS architecture and design
+# DNS Deployment Models
 
 ## Overview  
 DNS maps hostnames to IP-addresses in the network and is an important componenet in the Active Directory environment. Active Directory relies on DNS to locate domain controllers and services. When a client/PC tries to authenticate, it queries DNS for service records (SRV Records) which identify available domain controllers. Without DNS, domain authentication, service discovery, and many other core Active Directory functions would fail.
