@@ -12,12 +12,12 @@ DNS forwarders allow internal DNS servers to send queries to another DNS server 
 - Verify that external domain names can be resolved through the DNS server
 
 ## Environment
-Domain: klarstroem.local
+Domain: klarstroem.local  
 Network: 192.168.56.0/24
 
 DC01:
 - Windows Server domain controller
-- DNS Server rol
+- DNS Server role
 
 DC02:
 - Windows Server domain controller
@@ -25,11 +25,11 @@ DC02:
 
 ## Implementation
 #### Concept of DNS forwarders:
-DNS servers first tries to resolve queries using their own DNS zones and cached records. If the requests name cannot be resolved locally, the DNS server must forward the query externally.
+DNS servers first tries to resolve queries using their own DNS zones and cached records. If the request cannot be resolved locally, the DNS server must forward the query externally.
 
 **Forwarders** allow DNS servers to send unresolved queries to another DNS server, which then performs the lookup on behalf of the internal DNS server.
 
-Forexample, when a client tries to access an external website, the internal DNS server checks its own zones. Since the domain does not exist in the internal network, the query is forwarded to the configued forwarder. The forwarder then resolves the request using the external/ public DNS server it points to and then return the result to the internal DNS server, then the internal DNS server passes the response back to the client.
+Forexample, when a client tries to access an external website, the internal DNS server checks its own zones. Since the resource/server does not exist in the internal network, the query is forwarded to the configued forwarder. The forwarder then resolves the request using the external/public DNS server it points to and then return the result to the internal DNS server, then the internal DNS server passes the response back to the client.
 
 #### Forwarders vs Root Hints
 If there is no forwarders configured, the DNS server will instead rely on root hints. Root hints contain a list of internet root DNS servers that allow the DNS server to follow the DNS hierarchy to resolve the request.
