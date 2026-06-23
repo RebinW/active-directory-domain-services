@@ -1,4 +1,4 @@
-# Delegating limited administrative control
+# Delegating administrative control
 
 ## Overview
 This lab focuses on implementing delegated administrative control within AD. Instead of granting full administrative privileges, specific permissions were delegated to a helpdesk user account to allow password resets, and account unlock privileges within a defined organizational scope, in this case applied to the Aarhus child OU under the top-level OU "Users".
@@ -19,7 +19,7 @@ Delegation was applied at the OU level to follow and enforce the principle of le
 - Domain controller: DC01, 192.168.56.10
 - Client device: CLIENT01
 
-Organizational structure: 
+Organizational structure:  
 01_Users "Top-level OU"
 - Aarhus "Child OU"
   - Trading "Department"
@@ -30,24 +30,22 @@ Administrative user:
 - Anders Mikkelsen
 - Role Helpdesk administrator
 - Location scope: Aarhus OU
-
 - Delegated administrative control applied to Aarhus OU
 - Permissions restricted to user object management
 - Full domain administrative rights not given
   
 ## Implementation
 #### Step 1. Create the Helpdesk admin user.
-Before delegation could be configured, I created a dedicated helpdesk account. The goal was to avoid highly privileged accounts like Domain admin for everyday tasks.
+Before delegation could be configured, I created a dedicated helpdesk account. The goal was to avoid highly privileged accounts for everyday tasks.
 
 I started with creating a new user account inside: 01_Users -> Aarhus -> IT:
 ![New helpdesk user](screenshots/useranders.png)
 
 #### Step 2. Start delegation wizard
-Delegation was started at the Aarhus OU because this is where the users that Anders should manage are located. By delegating at this level, permissions automatically apply to all users inside Aarhus and any child OU under it, such as Trading and the other ones.
+Delegation started at the Aarhus OU because this is where the users that Anders should manage are located. By delegating at this level, permissions automatically apply to all users inside Aarhus and any child OU under it, such as Trading and the departments.
 
-This keeps administration organized and avoids assigning permissions to each user individually.
 - I right clicked on the Aarhus OU and chose -> Delegate control
-- Add Anders Mikkelsen:
+- Add Anders Mikkelsen:  
   ![Add Anders](screenshots/addanders.png)
 - Select **Create a custom task to delegate**:
   ![Custom task](screenshots/customtask.png)
@@ -117,7 +115,7 @@ First, I verified password reset functionality. I logged in as Anders on the cli
 Next, I tested account lockout. I logged out and attempted to sign in as Line Hansen using the wrong password several times. After the configured threshold was reached, the account became locked. This confirmed that the account lockout policy was active:
 ![Lockout policy](screenshots/accountlocked.png)
 
-After the account was logged, I signed back in as Anders and opened Line's account properties. The message indicating that the account was locked was visible. This time, the unlock account option was available and not greyed out. I selected the option and applied the changes. After unlocking the account, Linme Hansen was able to sign in again.
+After the account was logged, I signed back in as Anders and opened Line's account properties. The message indicating that the account was locked was visible. This time, the unlock account option was available and not greyed out. I selected the option and applied the changes. After unlocking the account, Line Hansen was able to sign in again.
 ![Unlock account](screenshots/unlockaccount.png)
 
 At the end, I tested the delegation scope. While logged in as Anders, I attempted to manage users outside the Aarhus OU. users located in other locations were not accessible for administrative actions. This confirmd that the delegated permissions were correctly limited to the Aarhus OU:
