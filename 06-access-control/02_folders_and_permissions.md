@@ -1,7 +1,7 @@
 # Department folders, Security Groups, NTFS Permissions, and Access Based Enumeration
 
 ## Overview
-This lab builds on lab 1 by expanding the file share into a structured file storage model within the domain. The goal is to create a realistic enterprise-style folder hierarchy, assign access through security groups, apply NTFS permissions based on least privlege, and enebale Access-Based Enumeration so users only see folders they are allowed access to.
+This lab builds on lab 01 by expanding the file share into a structured file storage model within the domain. The goal is to create a realistic enterprise-style folder hierarchy, assign access through security groups, apply NTFS permissions based on least privlege, and enebale Access-Based Enumeration so users only see folders they are allowed access to.
 
 ## Objectives
 - Create a department-based folder structure inside the shared volume
@@ -20,19 +20,19 @@ Shared storage:
 
 ## Implementation
 #### Step 1. Create the department folder structure
-Inside the existing folder path Z:\Shares\SharedNetworkFolders, a separete folder was created the Trading department
+Inside the existing folder path Z:\Shares\SharedNetworkFolders, a separete folder was created for the Trading department
 
 Structure: Z:\Shares\SharedNetworkFolders\Trading:
 ![New Trading folder](screenshots/tradingfolder.png)
 
-This folder represents the Trading department and will be used to demonstrate role-based access using existing groups created earlier
+This folder represents the Trading department and will be used to demonstrate role-based access using existing groups created in a previous lab.
 
 #### Step 2. Use existing Active Directory structure
 Instead of creating new groups, the lab uses the already created structure in Active Directory.
 
 Organizational Units:
 - OU: 02_Groups
-- Child OU: Trading
+- Child OU: Access
 
 Existing security groups:
 - Trading_Read
@@ -60,7 +60,7 @@ I observed that the "Users" group included not only read permissions, but also s
 
 #### Step 3. Disable inheritance on the Trading folder
 To enforce strict access control, inheritance was disabled on the Trading folder, steps: 
-1. Right-click Trading -> Properties -> Security -> Advanced'
+1. Right-click Trading -> Properties -> Security -> Advanced
 2. Click Disable inheritance
 3. Select -> Convert inherited permissions into explicit permissions
 
@@ -69,9 +69,9 @@ To enforce strict access control, inheritance was disabled on the Trading folder
 This ensures that existing groups stayed, but that we're now able to remove or modify groups as wanted.
 
 #### Step 4. Remove broad default groups.
-After disabling inheritance, unnecessary and groups were removed.
+After disabling inheritance, unnecessary groups were removed.
 
-Removed -> Users (KLARSTROEM\uSERS)
+Removed -> Users (KLARSTROEM\USERS)
 
 Reason: The "Users" group applies to all domain users and included special permissions such as file creation. Keeping this group would be against the principle of least privilege.
 
@@ -181,7 +181,7 @@ Conclusion:
 - Modify permission are working correctly
 - User can create edit, and update files
 
-**3. Validation of Access-Based Enumeration**
+**3. Validation of Access-Based Enumeration**  
 To validate folder visibility, I created an additional folder named HR: Z:\Shares\SharedNetworkFolders\HR
 
 Configuration:
