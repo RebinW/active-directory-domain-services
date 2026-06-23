@@ -1,7 +1,7 @@
 # SRV Records and AD Service discovery
 
 ## Overview
-Active Directory relies on DNS to locate services within the environment/ network. One of the most important DNS record types used in this process is the SRV record. SRV record ensures that clients and servers can locate services such as domain controllers, global gatelog servers, and Kerberos authentication services. Without SRV records, domain-joined computers would not be able to locate services required for authentication and other operations.
+Active Directory relies on DNS to locate services within the environment/network. One of the most important DNS record types used in this process is the SRV record. SRV records ensures that clients and servers can locate services such as domain controllers, global gatelog servers, and Kerberos authentication services. Without SRV records, domain-joined computers would not be able to locate services required for authentication and other operations.
 
 ## Objectives
 - Understand what SRV records are
@@ -27,7 +27,7 @@ SRV stands for Service Record. These records allow clients to discover and locat
 In Active Directory, SRV records are used to locate the following services:
 - LDAP
 - Kerberos: on-prem authentication protocal
-- Global Catelog:
+- Global Catelog
 - Domain controllers
 
 The records for the above services are automatically created when a server is promoted to a domain controller. 
@@ -56,7 +56,7 @@ When a domain computer start and tries to log in, it must first locate a domain 
 5. Client contacts the Kerberos Key Distribution Center (KDC) on the domain controller it has connected to. Kerberos runs on the domain controller and listens on port 88. So the client requets a Keberos ticket TGT "Ticket Granting Ticket"
 6. If the provided credentials are correct, the domain controller issues the ticket. At this stage the client can request service tickets for other resources in the network such as application, file servers.
 
-Once the client discovers a domain controller, it connects to that server directly. The same domain controller provides Kerberos authentication services, so the client does not have to perform another DNS lookup to locate a Kerberos server/ service. The reason the Kerberos SRV records exist is for: 
+Once the client discovers a domain controller, it connects to that server directly. The same domain controller provides Kerberos authentication services, so the client does not have to perform another DNS lookup to locate a Kerberos server/service. The reason the Kerberos SRV records exist is for: 
 - cross-domain authentication
 - specific service discovery scenarios
 - older Kerberos implementations.
@@ -79,14 +79,14 @@ So the whole command asks DNS: Which domain controllers provide LDAP services fo
 
 We see that the query successfully returns both domain controllers. the priority and weight are for load balancing and redundancy, both have identical values so in our case the client choose either domain controller.
 
-After DNS returned the hostnames for the domain controller, nslookup automatically resolves the hostnames using A records.
+After DNS returned the hostnames for the domain controller, nslookup automatically resolves the hostnames using A records from the forward lookup zone.
 
 In the privious lab about forward lookup zones, I briefly explain the difference between the two forward lookup zones msdcs.klarstroem.local and the klarstroem.local zone. I said that the msdcs is used to locate AD infrastructure and this is exactly what see see in this lab. 
 
 The first DNS query a client sends when trying to logon is _ldap._tcp.dc._msdcs.klarstroem.local, this query is answered from the _msdcs.klarstroem.local zone. This zone contains the SRV records that identify domain controllers. The response is going to be hostnames, and then the client must resolve the hostname so it sends another DNS query, this time that query is answered from the primary forward lookup zone klarstroem.local because this zone holds A records.
 
 ## Results
-The SRV records stored in DNS allow domain-joined devices to locate domain controller and other services automatically. These records enable clients to dynamically discover available services instead of relying on static server configs. 
+The SRV records stored in DNS allow domain-joined devices to locate domain controllers and other services automatically. These records enable clients to dynamically discover available services instead of relying on static server configs. 
 
 ## Lessons Learned
 This lab demonstrated how SRV records are used by Active Directory to locate services such as domain controllers and authentication services. Understanding SRV records and the process is important because they play a crucial role in domain logon, service discovery and other operations.
