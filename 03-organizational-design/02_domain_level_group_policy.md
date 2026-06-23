@@ -59,7 +59,9 @@ Computer Configuration -> Policies -> Windows Settings -> Local Policies -> User
 These settings define which accounts have privileges on domain controllers and control security auditing.
 
 ## Verification
-We're not going to make any changes to the default policies, and therefore this section will remain empthy. In the next lab we're going to apply policies on OU-level
+We're not going to make any changes to the default policies, and therefore this section will remain empthy. In the next lab we're going to apply policies at OU-level. I just wanted to show where we could edit and configure these policies that would affect the whole domain at once.
+
+It is also important to mention that if we configure a setting at the domain level and later configure the same setting in an OU-level GPO, the OU-level policy will generally take precedence because it is processed later. For example, if a domain-level GPO configures a desktop wallpaper and an OU-level GPO configures a different wallpaper, users within that OU will receive the OU-level configuration.
 
 ## Results
 The domain contains the two default Group Policy Objects that provide the baseline security settings for the Active Directory environment.
