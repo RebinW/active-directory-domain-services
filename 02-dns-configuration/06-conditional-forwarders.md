@@ -54,7 +54,7 @@ Stub zones contain the following records:
 Instead of manually defining the DNS server as in conditional forwarders, stub zones automatically learn which DNS server are authoritative for the other domain. This ensures that the DNS server can dynamically learn and maintain correct information of the authoritative DNS infrastructure for that zone.
 
 ## Verification
-Because the my environment only contains a single domain, conditional forwarders and stub zones were not configured. In a multi-domain environment, verification would involve testing name resolution between domains.
+Because my environment only contains a single domain, conditional forwarders and stub zones were not configured. In a multi-domain environment, verification would involve testing name resolution between domains and sites.
 
 ## Results
 This lab gave an good understanding and overview of the two concepts. Both conditional forwarders and stubzones allow DNS servers to forward requets to the correct DNS infrastructure responsible for another domain.
