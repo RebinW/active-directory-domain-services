@@ -75,7 +75,7 @@ A centralized network share named SharedNetworkFolders was created and linked to
 ## Lessons Learned
 During the setup, the shared resources could not be located from the client machine, even though connectivity test such as ping and DNS resolution were working correctly. This demonstrated that network connectivity alone is not sufficient to ensure access to shared resources. The issue was related to the active network profile and its settings.
 
-The showed the importance of verifying which network profile is active on both the server and the client. Windows chooses between domain, private and public profiles, each with different security settings. In this case, incorrect settings within the active profile prevented visibility and access to shared resources.
+This showed the importance of verifying which network profile is active on both the server and the client. Windows chooses between domain, private and public profiles, each with different security settings. In this case, incorrect settings within the active profile prevented visibility and access to shared resources.
 
 Another key takeaway is that network discovery is not required for accessing shared resources directly. While enabling network discovery can make servers visible in the Network view, reliable access should always be tested using the direct paths.
 
