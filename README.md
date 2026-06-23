@@ -19,6 +19,8 @@ The environment uses a single-domain forest
 
 ![Environment](architecture/activedirectoryoverview.png)
 
+
+
 The goal is to learn and practice Active Direcroty concepts. This will be my preperation for an hybrid environment where I will connect Entra ID to my existing on-premise environment
 
 ![Overall](architecture/hybridoverview.png)
