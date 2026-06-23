@@ -42,7 +42,7 @@ We're able to find the DNS zones by opening DNS manager: Server manager -> Tools
 
 ![DNS Zones](screenshots/dnsmanager.png)
 
-In the above picture, we see the *forward lookup zone* folder/ container. Inside the container we see the two forward lookup zones *klarstroem.local* and *_msdcs.klarstroem.local*.
+In the above picture, we see the *forward lookup zone* folder/container. Inside the container we see the two forward lookup zones *klarstroem.local* and *_msdcs.klarstroem.local*.
 
 
 **The klarstroem.local zone:**  
@@ -65,12 +65,12 @@ There are also additional folders inside of this domain:
 
 
 **The _msdcs.klarstroem.local zone:**  
-This zone supports Active Directory infrastructure. It stores records used to locate domain controllers and other directory services. Many of the records inside this zone are SRV records that allows clients to locate domain controllers. I have chosen to dedicate a seperate lab to exactly this because of its importance within Active Directory.
+This zone supports Active Directory infrastructure. It stores records used to locate domain controllers and other directory services. Many of the records inside this zone are SRV records that allow clients to locate domain controllers. I have chosen to dedicate a seperate lab to exactly this because of its importance within Active Directory.
 
 ![msdcs.klarstroem.local zone](screenshots/secondaryzone.png)
 
 #### How records are created in the forward lookup zones  
-When recources join the domain, DNS records are dynamically registered in the primary domain zone. Infrastructure records required for locating domain controller are registered in the _msdcs zone by domain domain controllers and Active Directory services.
+When recources join the domain, DNS records are dynamically registered in the primary domain zone. Infrastructure records required for locating domain controllers are registered in the _msdcs zone by domain controllers and Active Directory services.
 
 Forexample, if a server joins the domain that server will first be registered in the primary zone (klarstroem.local) and typical records such as A and AAAA records will be created. Later when we promote that server to a domain controller then SRV records will automatically be created in the _msdcs zone.
 
@@ -95,9 +95,9 @@ I will verify resolution by running nslookup, and then we'll see that the hostna
 ![ping host](screenshots/pinghost.png)
 
 ## Results
-The forward lookup zone klarstroem.local contains the DNS recvords used to resolve hostnames to IP addresses in the domain. I created a manual A record and verified that the DNS server was able to resolve the hostname correctly using nslookup and ping. This confirmed that the DNS server is functioning as expected and that records stored in the zone can be used by clients and servers in the environment.
+The forward lookup zone klarstroem.local contains the DNS records used to resolve hostnames to IP addresses in the domain. I created a manual A record and verified that the DNS server was able to resolve the hostname correctly using nslookup and reach it using ping. This confirmed that the DNS server is functioning as expected and that records stored in the zone can be used by clients and servers in the environment.
 
 ## Lessons Learned
 This lab helped me better understand how forward lookup zones are structured and how DNS records are stored within a domain. I saw how host records map machines to IP addresses and how DNS manager organizes types of records used by Active Directory.
 
-I also learned that DNS in an Active Directory environment is not only used for basic hostname resolution. It also plays an important role in helping clients locate authentication services and other infrastructure services. Understanding how these records are stored in the zone makes it easier to troubleshoot DNS problems in the futuree.
+I also learned that DNS in an Active Directory environment is not only used for basic hostname resolution. It also plays an important role in helping clients locate authentication services and other infrastructure services. Understanding how these records are stored in the zone makes it easier to troubleshoot DNS problems in the future.
