@@ -1,7 +1,7 @@
 # DNS architecture and design
 
 ## Overview  
-DNS maps hostnames to IP-addresses in the networkl and is a crucial componenet in the Active Directory environment. Active Directory relies on DNS to locate domain controllers and services. When a client/ PC tries to authenticate, it queries DNS for service records which identify available domain controllers. Without DNS, domain authentication, service discovery, and many other core Active Directory functions fail.
+DNS maps hostnames to IP-addresses in the network and is an important componenet in the Active Directory environment. Active Directory relies on DNS to locate domain controllers and services. When a client/PC tries to authenticate, it queries DNS for service records (SRV Records) which identify available domain controllers. Without DNS, domain authentication, service discovery, and many other core Active Directory functions would fail.
 
 This document describes the DNS architecture used in this project and explains the deesign decisions behind the selected deployment model.
 
@@ -22,7 +22,7 @@ DC02
 - Windows Server Domain controlelr
 - DNS server role
 
-The environment uses an **Active Directory integrated DNS zone** hosted on both domain controllers. DNS runs on each domain controllers, and the zone data replicates through Active Directory replication.
+The environment uses an **Active Directory integrated DNS zone** hosted on both domain controllers. DNS runs on each domain controller, and the zone data replicates through Active Directory replication.
 
 ## Implementation  
 
@@ -54,7 +54,7 @@ All records within the forward lookup zone revolves hostnames to IP-addresses re
 - A records: Resolves hostnames to IPv4 addresses
 - AAAA records: Resolves hostnames to IPv6 addresses
 - SRV records: Identifies servers that provide specific services such as LDAP or Kerberos
-- PTR records: Used in reversed lookup zones to map IP-addresses to hostnames
+- PTR records: Used in reverse lookup zones to map IP-addresses to hostnames
 - NS records: Identifies which DNS servers are authoriative for a zone
 - CNAME records: Creates an alias that points to another hostname
   - Example: files.klarstroem.local -> CNAME -> server01.klarstroem.local.
@@ -69,16 +69,16 @@ A primary zone stores the writable copy of the DNS data base on a single DNS ser
 This model is used mostly if the server is a dedicated DNS server not running domain services. The model creates a single write point and requires manual management of zone transfers.
 
 **Stub zones:**  
-Stub zones contains only a small small database of records from another zone. It stores information about the authoritative DNS servers for that zone and helps DNS servers locate those servers.
+Stub zones contains only a small database of records from another zone. It stores information about the authoritative DNS servers for that zone and helps DNS servers locate those servers.
 
 Stub zones are used when a company has several domains. When a clients needs to access a resource in the other domain, the DNS server in its own domain does not hold records from other domains services and resources. The stub zone created in its own domain therefore always hold records that would point to the other domains authoritative DNS server, that would then help the client locate the resource in that domain.
 
-An alternative to a Stub is something called **conditional forwarders**. This does the exact same thing as a Stub zone, but instead of holding a subset of the other domains DNS data, it then simply instead points to the other domains authoritative DNS server. It is much simpler to configure, but if the other domains DNS server for any reason changes IP-Address it will not be able to send queries because it does not update automatically where as a Stub does exactly that.
+An alternative to a Stub is something called **conditional forwarders**. This does the exact same thing as a Stub zone, but instead of holding a subset of the other domains DNS data, it then simply instead points to the other domains authoritative DNS server. It is much simpler to configure, but if the other domains DNS server for any reason changes IP-Address it will not be able to send queries because it does not update automatically, were as a Stub does exactly that.
 
 **Active Directory integrated zones**  
 Active Directory integrated zones store DNS zone data inside the AD database. Replication happens automatically through Active Directory replication. 
 
-This model uses multi master updates, emaning multiple DNS servers can accept changes to the zone. This is exactly the set-up we are ruunning, and this is also the recommended approch by Microsoft. The reason for choosing this setup is:
+This model uses multi master updates, meaning multiple DNS servers can accept changes to the zone. This is exactly the set-up we are running, and this is also the recommended approch by Microsoft. The reason for choosing this setup is:
 
 - Replication: DNS data replicates automatically between domain controllers through Active Directory replication.
 - High availability: Both DC01 and DC02 host the DNS zone and can process DNS queries which gives us redundancy.
@@ -99,4 +99,4 @@ DNS is a crucial and foundational component of Active Directory infrastructure. 
 
 Active Directory integrated zones simplefies DNS management compared to other deployment options. It eliminates the need for manual zone transfers and enables multi master replication between domain controllers.
 
-Later DNS labs will go into more depth on dns records, reverse lookup zones, and especially service discovery using SRV records. 
+Later DNS labs will go into more depth on DNS records, reverse lookup zones, and especially service discovery using SRV records. 
