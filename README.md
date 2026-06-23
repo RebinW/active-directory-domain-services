@@ -40,8 +40,8 @@ Some of the topics covered in this project include:
 - Organizational Units (03-organizational-design folder)
   - OU Design
   - Group policies
-  - Domain level group policies
-  - OU level group policies
+    - Domain level group policies
+    - OU level group policies
 - Identity management (04-identity-managment folder)
   - User creation & attributes
   - Security Groups
